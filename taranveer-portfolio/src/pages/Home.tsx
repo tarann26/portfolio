@@ -3,6 +3,7 @@ import HeroSection from "../components/home/HeroSection";
 import AboutSection from "../components/home/AboutSection";
 import SkillsSection from "../components/home/SkillsSection";
 import ProjectsSection from "../components/home/ProjectsSection";
+import StartupSection from "../components/home/StartupSection";
 import ExperienceSection from "../components/home/ExperienceSection";
 import EducationSection from "../components/home/EducationSection";
 
@@ -31,6 +32,7 @@ const Home = () => {
       <AboutSection />
       <SkillsSection />
       <ProjectsSection />
+      <StartupSection />
       <ExperienceSection />
       <EducationSection />
     </div>

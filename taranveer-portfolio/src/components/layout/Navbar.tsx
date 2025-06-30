@@ -111,6 +111,13 @@ const NavLinks = ({ isMobile, onClick }: NavLinksProps) => {
         Projects
       </a>
       <a
+        href="#startup"
+        className="hover:text-primary transition-colors"
+        onClick={handleClick}
+      >
+        Startup
+      </a>
+      <a
         href="#education"
         className="hover:text-primary transition-colors"
         onClick={handleClick}
