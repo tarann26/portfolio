@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Github, ExternalLink } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { Button } from "../components/ui/button";
 import { projects } from "../data/portfolioData";
 import { Card } from "../components/ui/card";
+import FeatureSearch from "../components/project/FeatureSearch";
+
+const markdownFiles = import.meta.glob("../docs/*.md", { as: "raw" });
 
 const ProjectDetail = () => {
   const { projectId } = useParams<{ projectId: string }>();
@@ -11,10 +15,20 @@ const ProjectDetail = () => {
     undefined
   );
   const [isLoading, setIsLoading] = useState(true);
+  const [markdown, setMarkdown] = useState("");
 
   useEffect(() => {
     const foundProject = projects.find((p) => p.id === projectId);
     setProject(foundProject);
+
+    const loadMarkdown = async () => {
+      const importFn = markdownFiles[`../docs/${projectId}.md`];
+      if (importFn) {
+        const md = await importFn();
+        setMarkdown(md as string);
+      }
+    };
+    loadMarkdown();
 
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -72,21 +86,28 @@ const ProjectDetail = () => {
             <div className="space-y-6">
               <section>
                 <h2 className="text-2xl font-semibold mb-4">Overview</h2>
-                <p className="text-foreground/90 leading-relaxed">
-                  {project.description}
-                </p>
+                <ReactMarkdown className="prose prose-sm max-w-none text-foreground/90">
+                  {markdown || project.description}
+                </ReactMarkdown>
               </section>
 
               {project.details && project.details.length > 0 && (
                 <section>
                   <h2 className="text-2xl font-semibold mb-4">Key Features</h2>
-                  <ul className="space-y-2 list-disc pl-5">
+                  <FeatureSearch features={project.details} />
+                  <div className="space-y-6">
                     {project.details.map((detail, index) => (
-                      <li key={index} className="text-foreground/90">
-                        {detail}
-                      </li>
+                      <div key={index} id={`feature-${index}`}
+                        className="space-y-2">
+                        <img
+                          src={project.imageUrl}
+                          alt={`Feature ${index + 1}`}
+                          className="rounded border"
+                        />
+                        <p className="text-foreground/90">{detail}</p>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </section>
               )}
             </div>

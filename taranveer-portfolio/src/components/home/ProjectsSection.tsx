@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ExternalLink, Github } from "lucide-react";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "../ui/card";
-import { projects } from "../../data/portfolioData";
+import { projects, personalInfo } from "../../data/portfolioData";
 
 const ProjectsSection = () => {
   const [ref, inView] = useInView({
@@ -53,6 +53,17 @@ const ProjectsSection = () => {
               className="text-muted-foreground"
             >
               A showcase of my recent work, highlighting my technical skills, problem-solving abilities, and creativity.
+              <br />
+              These projects are not publicly available.{' '}
+              <a
+                href={personalInfo.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline"
+              >
+                View my GitHub
+              </a>
+              .
             </motion.p>
           </div>
 
