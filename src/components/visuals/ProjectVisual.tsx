@@ -673,19 +673,166 @@ function DedupCoreVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
+// OrderBook: Bid/ask ladder with a match event in the middle
 function OrderBookVisual({ isHovered }: { isHovered: boolean }) {
-  const bids = [48, 38, 28, 18];
-  const asks = [48, 38, 28, 18];
+  // Asks (sell orders), descending price top→bottom
+  const asks = [
+    { price: 105, size: 20 },
+    { price: 104, size: 35 },
+    { price: 103, size: 50 },
+    { price: 102, size: 25 },
+  ];
+  // Bids (buy orders), descending price top→bottom
+  const bids = [
+    { price: 101, size: 30 },
+    { price: 100, size: 45 },
+    { price: 99, size: 40 },
+    { price: 98, size: 20 },
+  ];
+
+  const askRed = "#ef4444";
+  const bidGreen = "#22c55e";
+
   return (
     <svg viewBox="0 0 100 100" className="w-full h-full">
-      {bids.map((w, i) => (
-        <rect key={`bid-${i}`} x={50 - w} y={12 + i * 14} width={w} height="10" rx="1" fill="#22c55e" opacity={isHovered ? 0.7 : 0.4} />
-      ))}
-      {asks.map((w, i) => (
-        <rect key={`ask-${i}`} x={50} y={12 + i * 14} width={w} height="10" rx="1" fill="#ef4444" opacity={isHovered ? 0.7 : 0.4} />
-      ))}
-      <line x1="50" y1="8" x2="50" y2="76" stroke="#fff" strokeWidth="0.5" opacity="0.3" />
-      <text x="50" y="90" textAnchor="middle" fontSize="7" fill="#86efac">order book</text>
+      {/* Header labels */}
+      <text
+        x={8}
+        y={10}
+        fill="#a1a1aa"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        price
+      </text>
+      <text
+        x={90}
+        y={10}
+        textAnchor="end"
+        fill="#a1a1aa"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        size
+      </text>
+
+      {/* Asks (top half) */}
+      {asks.map((a, i) => {
+        const y = 14 + i * 8;
+        const barWidth = a.size * 0.6;
+        return (
+          <motion.g key={`ask-${i}`}>
+            <motion.rect
+              x={50 - barWidth}
+              y={y}
+              width={barWidth}
+              height={6}
+              fill={askRed}
+              opacity={0.25}
+              initial={{ width: 0 }}
+              animate={{ width: barWidth }}
+              transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+            />
+            <text
+              x={8}
+              y={y + 4.5}
+              fill={askRed}
+              fontSize="4"
+              fontFamily="monospace"
+            >
+              {a.price.toFixed(2)}
+            </text>
+            <text
+              x={90}
+              y={y + 4.5}
+              textAnchor="end"
+              fill={askRed}
+              fontSize="4"
+              fontFamily="monospace"
+              opacity={0.85}
+            >
+              {a.size}
+            </text>
+          </motion.g>
+        );
+      })}
+
+      {/* Spread / match event row (center) */}
+      <motion.rect
+        x={6}
+        y={47}
+        width={88}
+        height={6}
+        fill="#06b6d4"
+        opacity={0.15}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? [0.15, 0.5, 0.15] : 0.15 }}
+        transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
+      />
+      <text
+        x={50}
+        y={52}
+        textAnchor="middle"
+        fill="#06b6d4"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        -- spread --
+      </text>
+
+      {/* Bids (bottom half) */}
+      {bids.map((b, i) => {
+        const y = 56 + i * 8;
+        const barWidth = b.size * 0.6;
+        return (
+          <motion.g key={`bid-${i}`}>
+            <motion.rect
+              x={50}
+              y={y}
+              width={barWidth}
+              height={6}
+              fill={bidGreen}
+              opacity={0.25}
+              initial={{ width: 0 }}
+              animate={{ width: barWidth }}
+              transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+            />
+            <text
+              x={8}
+              y={y + 4.5}
+              fill={bidGreen}
+              fontSize="4"
+              fontFamily="monospace"
+            >
+              {b.price.toFixed(2)}
+            </text>
+            <text
+              x={90}
+              y={y + 4.5}
+              textAnchor="end"
+              fill={bidGreen}
+              fontSize="4"
+              fontFamily="monospace"
+              opacity={0.85}
+            >
+              {b.size}
+            </text>
+          </motion.g>
+        );
+      })}
+
+      {/* Incoming market order pulse (hover only) */}
+      {isHovered && (
+        <motion.circle
+          cx={50}
+          cy={50}
+          r={2}
+          fill="#f59e0b"
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: [1, 6], opacity: [1, 0] }}
+          transition={{ duration: 1.2, repeat: Infinity }}
+        />
+      )}
     </svg>
   );
 }
