@@ -3,7 +3,14 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
-type ProjectType = "invoke" | "seecare" | "crypto-tracker" | "brainwave";
+type ProjectType =
+  | "invoke"
+  | "seecare"
+  | "crypto-tracker"
+  | "brainwave"
+  | "flytetorch"
+  | "dedupcore"
+  | "orderbook";
 
 interface ProjectVisualProps {
   type: ProjectType;
@@ -410,12 +417,73 @@ function BrainWaveVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
+function FlyteTorchVisual({ isHovered }: { isHovered: boolean }) {
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full">
+      <circle cx="50" cy="50" r="18" fill="none" stroke="#6366f1" strokeWidth="2" opacity={isHovered ? 1 : 0.7} />
+      {[0, 60, 120, 180, 240, 300].map((angle, i) => {
+        const rad = (angle * Math.PI) / 180;
+        const x = 50 + 34 * Math.cos(rad);
+        const y = 50 + 34 * Math.sin(rad);
+        return (
+          <g key={i}>
+            <line x1="50" y1="50" x2={x} y2={y} stroke="#6366f1" strokeWidth="1" opacity="0.4" />
+            <circle cx={x} cy={y} r="5" fill="#6366f1" opacity={isHovered ? 0.9 : 0.5} />
+          </g>
+        );
+      })}
+      <text x="50" y="54" textAnchor="middle" fontSize="8" fill="#a5b4fc">torch</text>
+    </svg>
+  );
+}
+
+function DedupCoreVisual({ isHovered }: { isHovered: boolean }) {
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full">
+      {[0, 1, 2, 3].map((i) => (
+        <rect
+          key={i}
+          x={10 + i * 22}
+          y={30}
+          width="16"
+          height="40"
+          rx="2"
+          fill="#10b981"
+          opacity={isHovered ? 0.8 - i * 0.1 : 0.4}
+        />
+      ))}
+      <line x1="10" y1="80" x2="90" y2="80" stroke="#10b981" strokeWidth="1" opacity="0.5" />
+      <text x="50" y="95" textAnchor="middle" fontSize="7" fill="#6ee7b7">dedup</text>
+    </svg>
+  );
+}
+
+function OrderBookVisual({ isHovered }: { isHovered: boolean }) {
+  const bids = [48, 38, 28, 18];
+  const asks = [48, 38, 28, 18];
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full">
+      {bids.map((w, i) => (
+        <rect key={`bid-${i}`} x={50 - w} y={12 + i * 14} width={w} height="10" rx="1" fill="#22c55e" opacity={isHovered ? 0.7 : 0.4} />
+      ))}
+      {asks.map((w, i) => (
+        <rect key={`ask-${i}`} x={50} y={12 + i * 14} width={w} height="10" rx="1" fill="#ef4444" opacity={isHovered ? 0.7 : 0.4} />
+      ))}
+      <line x1="50" y1="8" x2="50" y2="76" stroke="#fff" strokeWidth="0.5" opacity="0.3" />
+      <text x="50" y="90" textAnchor="middle" fontSize="7" fill="#86efac">order book</text>
+    </svg>
+  );
+}
+
 export function ProjectVisual({ type, isHovered = false }: ProjectVisualProps) {
   const visuals: Record<ProjectType, React.ReactNode> = {
     invoke: <InvokeVisual isHovered={isHovered} />,
     seecare: <SeeCareVisual isHovered={isHovered} />,
     "crypto-tracker": <CryptoTrackerVisual isHovered={isHovered} />,
     brainwave: <BrainWaveVisual isHovered={isHovered} />,
+    flytetorch: <FlyteTorchVisual isHovered={isHovered} />,
+    dedupcore: <DedupCoreVisual isHovered={isHovered} />,
+    orderbook: <OrderBookVisual isHovered={isHovered} />,
   };
 
   return (
