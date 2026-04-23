@@ -20,8 +20,8 @@ interface Project {
     | "seecare"
     | "crypto-tracker"
     | "brainwave"
-    | "flytetorch"
-    | "dedupcore"
+    | "flyte"
+    | "cairn"
     | "orderbook";
   tier: 1 | 2;
   award?: string;
@@ -29,14 +29,14 @@ interface Project {
 
 const projects: Project[] = [
   {
-    id: "flytetorch",
-    name: "FlyteTorch",
+    id: "flyte",
+    name: "Flyte",
     tagline: "Distributed ML training orchestration for PyTorch on Kubernetes",
     description:
       "Wraps torch.distributed, NCCL, and Kubernetes scheduling behind a declarative TrainingSpec with automatic fault recovery and built-in profiling.",
     tech: ["Python", "PyTorch", "Kubernetes", "Flyte", "Prometheus"],
     github: "https://github.com/tarann26/flytetorch",
-    visualType: "flytetorch",
+    visualType: "flyte",
     tier: 1,
   },
   {
@@ -51,13 +51,13 @@ const projects: Project[] = [
     award: "Best Senior Project W25",
   },
   {
-    id: "dedupcore",
-    name: "DedupCore",
+    id: "cairn",
+    name: "Cairn",
     tagline: "High-performance block deduplication engine in C++17",
     description:
       "Rabin-fingerprint content-defined chunking, SHA-256 content addressing, lock-free sharded index. ~500 MB/s chunking, 65% dedup ratio.",
     tech: ["C++17", "OpenSSL", "CMake", "ASan/TSan"],
-    visualType: "dedupcore",
+    visualType: "cairn",
     tier: 2,
   },
   {

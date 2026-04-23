@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Taranveer Anand | Developer & Founder",
   description:
-    "CS senior at Case Western Reserve. Building Shipped — an AI job application platform. Previously: SeeCare (Best Senior Project W25), FlyteTorch, DedupCore, OrderBook.",
+    "CS senior at Case Western Reserve. Building Shipped — an AI job application platform. Previously: SeeCare (Best Senior Project W25), Flyte, Cairn, OrderBook.",
   keywords: [
     "Taranveer Anand",
     "software developer",

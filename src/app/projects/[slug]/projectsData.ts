@@ -13,8 +13,8 @@ export interface ProjectData {
     | "seecare"
     | "crypto-tracker"
     | "brainwave"
-    | "flytetorch"
-    | "dedupcore"
+    | "flyte"
+    | "cairn"
     | "orderbook";
   features: string[];
 }
@@ -110,11 +110,11 @@ export const projectsData: Record<string, ProjectData> = {
       "Shared file storage and management",
     ],
   },
-  flytetorch: {
-    name: "FlyteTorch",
+  flyte: {
+    name: "Flyte",
     tagline: "Distributed ML training orchestration for PyTorch on Kubernetes",
     description:
-      "FlyteTorch wraps the complexity of torch.distributed, NCCL, rank assignment, and fault recovery into a declarative TrainingSpec — letting ML engineers focus on model iteration instead of infrastructure plumbing.",
+      "Flyte wraps the complexity of torch.distributed, NCCL, rank assignment, and fault recovery into a declarative TrainingSpec — letting ML engineers focus on model iteration instead of infrastructure plumbing.",
     challenge:
       "Distributed PyTorch jobs at scale involve a surprising amount of undifferentiated infrastructure work: DDP boilerplate, rank assignment, NCCL configuration, fault recovery, and profiling. One misconfigured env var can silently corrupt gradients, and 'training is slow' could mean I/O-, communication-, or compute-bound without instrumentation.",
     solution:
@@ -130,7 +130,7 @@ export const projectsData: Record<string, ProjectData> = {
       "Redis",
     ],
     github: "https://github.com/tarann26/flytetorch",
-    visualType: "flytetorch",
+    visualType: "flyte",
     features: [
       "Declarative TrainingSpec on Kubernetes + Flyte",
       "Automatic rank assignment and OOM/NCCL fault recovery",
@@ -140,8 +140,8 @@ export const projectsData: Record<string, ProjectData> = {
       "Redis-backed dataset cache with SHA-256 content-addressable versioning",
     ],
   },
-  dedupcore: {
-    name: "DedupCore",
+  cairn: {
+    name: "Cairn",
     tagline: "High-performance block deduplication engine in C++17",
     description:
       "A block deduplication engine using Rabin-fingerprint content-defined chunking and SHA-256 content addressing, with a lock-free sharded chunk index and delta-encoded WAN replication.",
@@ -158,7 +158,7 @@ export const projectsData: Record<string, ProjectData> = {
       "Google Benchmark",
       "ASan/TSan",
     ],
-    visualType: "dedupcore",
+    visualType: "cairn",
     features: [
       "Rabin-fingerprint content-defined chunking",
       "SHA-256 content addressing",

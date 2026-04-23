@@ -7,8 +7,8 @@ type ProjectType =
   | "seecare"
   | "crypto-tracker"
   | "brainwave"
-  | "flytetorch"
-  | "dedupcore"
+  | "flyte"
+  | "cairn"
   | "orderbook";
 
 interface ProjectVisualProps {
@@ -416,8 +416,8 @@ function BrainWaveVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
-// FlyteTorch: Central orchestrator with ring of worker nodes, animated gradient sync
-function FlyteTorchVisual({ isHovered }: { isHovered: boolean }) {
+// Flyte: Central orchestrator with ring of worker nodes, animated gradient sync
+function FlyteVisual({ isHovered }: { isHovered: boolean }) {
   // 6 worker nodes evenly spaced on a circle of radius 30 around (50, 50)
   const workers = Array.from({ length: 6 }, (_, i) => {
     const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
@@ -536,8 +536,8 @@ function FlyteTorchVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
-// DedupCore: Stream of raw blocks on the left collapsing into deduplicated set on the right
-function DedupCoreVisual({ isHovered }: { isHovered: boolean }) {
+// Cairn: Stream of raw blocks on the left collapsing into deduplicated set on the right
+function CairnVisual({ isHovered }: { isHovered: boolean }) {
   // 6 raw blocks on the left, some duplicated (same color = same content)
   const rawBlocks = [
     { y: 15, color: "#06b6d4" },
@@ -843,8 +843,8 @@ export function ProjectVisual({ type, isHovered = false }: ProjectVisualProps) {
     seecare: <SeeCareVisual isHovered={isHovered} />,
     "crypto-tracker": <CryptoTrackerVisual isHovered={isHovered} />,
     brainwave: <BrainWaveVisual isHovered={isHovered} />,
-    flytetorch: <FlyteTorchVisual isHovered={isHovered} />,
-    dedupcore: <DedupCoreVisual isHovered={isHovered} />,
+    flyte: <FlyteVisual isHovered={isHovered} />,
+    cairn: <CairnVisual isHovered={isHovered} />,
     orderbook: <OrderBookVisual isHovered={isHovered} />,
   };
 

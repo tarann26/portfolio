@@ -13,10 +13,10 @@ const skillCategories: SkillCategory[] = [
   {
     name: "languages",
     skills: [
-      { name: "python", context: "FlyteTorch, SeeCare, ML work" },
+      { name: "python", context: "Flyte, SeeCare, ML work" },
       { name: "typescript", context: "Shipped, Invoke, portfolio" },
       { name: "java", context: "AI agents, academic projects" },
-      { name: "c/c++", context: "DedupCore, systems programming" },
+      { name: "c/c++", context: "Cairn, systems programming" },
       { name: "rust", context: "Learning, systems projects" },
     ],
   },
@@ -34,7 +34,7 @@ const skillCategories: SkillCategory[] = [
     name: "ai_ml",
     skills: [
       { name: "prompt engineering", context: "ALL OF THEM" },
-      { name: "pytorch", context: "FlyteTorch, SeeCare face embeddings" },
+      { name: "pytorch", context: "Flyte, SeeCare face embeddings" },
       { name: "opencv", context: "Computer vision" },
       { name: "scikit-learn", context: "Crypto-Tracker ML models" },
     ],
@@ -46,7 +46,7 @@ const skillCategories: SkillCategory[] = [
       { name: "supabase", context: "Shipped, BrainWave" },
       { name: "docker", context: "Containerization" },
       { name: "postgresql", context: "All database work" },
-      { name: "redis", context: "FlyteTorch dataset cache, caching" },
+      { name: "redis", context: "Flyte dataset cache, caching" },
     ],
   },
   {
