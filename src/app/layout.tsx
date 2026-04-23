@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,13 +18,15 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Taranveer Anand | Developer & Founder",
   description:
-    "CS student at Case Western Reserve, building at the intersection of AI, FinTech, and human-centered design. Creator of Invoke, SeeCare, and more.",
+    "CS senior at Case Western Reserve. Building Shipped — an AI job application platform. Previously: SeeCare (Best Senior Project W25), FlyteTorch, DedupCore, OrderBook.",
   keywords: [
     "Taranveer Anand",
     "software developer",
     "AI",
     "FinTech",
-    "full stack",
+    "distributed systems",
+    "C++",
+    "Shipped",
     "Case Western Reserve",
     "portfolio",
   ],
@@ -36,13 +39,13 @@ export const metadata: Metadata = {
     siteName: "Taranveer Anand",
     title: "Taranveer Anand | Developer & Founder",
     description:
-      "CS student at Case Western Reserve, building at the intersection of AI, FinTech, and human-centered design.",
+      "CS senior at Case Western Reserve. Building Shipped — an AI job application platform.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Taranveer Anand | Developer & Founder",
     description:
-      "CS student at Case Western Reserve, building at the intersection of AI, FinTech, and human-centered design.",
+      "CS senior at Case Western Reserve. Building Shipped — an AI job application platform.",
   },
   robots: {
     index: true,
@@ -62,6 +65,7 @@ export default function RootLayout({
       >
         <div className="noise-overlay" aria-hidden="true" />
         {children}
+        <Analytics />
       </body>
     </html>
   );
