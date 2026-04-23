@@ -10,7 +10,7 @@ interface NowItem {
 }
 
 const nowItems: NowItem[] = [
-  { text: "building invoke (mcp server for claude)", highlight: true },
+  { text: "shipping shipped (shipped.one)", highlight: true },
   { text: "researching semantic similarity @ noetic" },
   { text: "grinding NLH-300 sessions" },
   { text: "learning guitar (badly)" },
@@ -31,7 +31,7 @@ export function Now() {
           <TerminalWindow title="cat ~/.now">
             <div className="space-y-2">
               <p className="text-text-secondary text-sm mb-4">
-                <span className="text-accent-cyan">last updated:</span> jan 2026
+                <span className="text-accent-cyan">last updated:</span> apr 2026
                 <span className="ml-2 inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               </p>
 
