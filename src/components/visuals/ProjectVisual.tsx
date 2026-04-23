@@ -416,22 +416,122 @@ function BrainWaveVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
+// FlyteTorch: Central orchestrator with ring of worker nodes, animated gradient sync
 function FlyteTorchVisual({ isHovered }: { isHovered: boolean }) {
+  // 6 worker nodes evenly spaced on a circle of radius 30 around (50, 50)
+  const workers = Array.from({ length: 6 }, (_, i) => {
+    const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
+    return {
+      x: 50 + 30 * Math.cos(angle),
+      y: 50 + 30 * Math.sin(angle),
+    };
+  });
+
   return (
     <svg viewBox="0 0 100 100" className="w-full h-full">
-      <circle cx="50" cy="50" r="18" fill="none" stroke="#6366f1" strokeWidth="2" opacity={isHovered ? 1 : 0.7} />
-      {[0, 60, 120, 180, 240, 300].map((angle, i) => {
-        const rad = (angle * Math.PI) / 180;
-        const x = 50 + 34 * Math.cos(rad);
-        const y = 50 + 34 * Math.sin(rad);
+      {/* Ring-connection lines between adjacent workers (gradient sync) */}
+      {workers.map((w, i) => {
+        const next = workers[(i + 1) % workers.length];
         return (
-          <g key={i}>
-            <line x1="50" y1="50" x2={x} y2={y} stroke="#6366f1" strokeWidth="1" opacity="0.4" />
-            <circle cx={x} cy={y} r="5" fill="#6366f1" opacity={isHovered ? 0.9 : 0.5} />
-          </g>
+          <motion.line
+            key={`ring-${i}`}
+            x1={w.x}
+            y1={w.y}
+            x2={next.x}
+            y2={next.y}
+            stroke="#06b6d4"
+            strokeWidth="0.5"
+            strokeDasharray="2 2"
+            initial={{ opacity: 0.2 }}
+            animate={{ opacity: isHovered ? 0.7 : 0.3 }}
+          />
         );
       })}
-      <text x="50" y="54" textAnchor="middle" fontSize="8" fill="#a5b4fc">torch</text>
+
+      {/* Spoke lines from orchestrator to each worker */}
+      {workers.map((w, i) => (
+        <motion.line
+          key={`spoke-${i}`}
+          x1={50}
+          y1={50}
+          x2={w.x}
+          y2={w.y}
+          stroke="#06b6d4"
+          strokeWidth="0.5"
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: isHovered ? 0.6 : 0.35 }}
+        />
+      ))}
+
+      {/* All-reduce pulse: packet travels around the ring */}
+      {workers.map((w, i) => {
+        const next = workers[(i + 1) % workers.length];
+        return (
+          <motion.circle
+            key={`packet-${i}`}
+            r="1.5"
+            fill="#f59e0b"
+            initial={{ cx: w.x, cy: w.y, opacity: 0 }}
+            animate={{
+              cx: [w.x, next.x],
+              cy: [w.y, next.y],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 0.5,
+              delay: i * 0.15,
+              repeat: Infinity,
+              repeatDelay: 2.4,
+              ease: "linear",
+            }}
+          />
+        );
+      })}
+
+      {/* Worker nodes */}
+      {workers.map((w, i) => (
+        <motion.circle
+          key={`worker-${i}`}
+          cx={w.x}
+          cy={w.y}
+          r="4"
+          fill="#141414"
+          stroke="#06b6d4"
+          strokeWidth="1.2"
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{
+            duration: 0.3,
+            delay: i * 0.08,
+            repeat: Infinity,
+            repeatDelay: 2.4,
+          }}
+        />
+      ))}
+
+      {/* Central orchestrator */}
+      <motion.rect
+        x={42}
+        y={42}
+        width={16}
+        height={16}
+        rx={2}
+        fill="#06b6d4"
+        stroke="#06b6d4"
+        strokeWidth="1"
+        animate={{ scale: isHovered ? [1, 1.05, 1] : 1 }}
+        transition={{ duration: 1, repeat: isHovered ? Infinity : 0 }}
+      />
+      <text
+        x={50}
+        y={53}
+        textAnchor="middle"
+        fill="#0a0a0a"
+        fontSize="5"
+        fontFamily="monospace"
+        fontWeight="bold"
+      >
+        K8s
+      </text>
     </svg>
   );
 }
