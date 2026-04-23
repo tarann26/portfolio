@@ -1,5 +1,6 @@
 import {
   Hero,
+  Shipped,
   Projects,
   Now,
   Skills,
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
+      <Shipped />
       <Projects />
       <Now />
       <Skills />
