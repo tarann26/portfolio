@@ -15,21 +15,28 @@ interface Project {
   tech: string[];
   github?: string;
   live?: string;
-  visualType: "invoke" | "seecare" | "crypto-tracker" | "brainwave";
+  visualType:
+    | "invoke"
+    | "seecare"
+    | "crypto-tracker"
+    | "brainwave"
+    | "flyte"
+    | "cairn"
+    | "orderbook";
   tier: 1 | 2;
   award?: string;
 }
 
 const projects: Project[] = [
   {
-    id: "invoke",
-    name: "Invoke",
-    tagline: "Universal API-to-tool bridge for Claude",
+    id: "flyte",
+    name: "Flyte",
+    tagline: "Distributed ML training orchestration for PyTorch on Kubernetes",
     description:
-      "MCP server that lets Claude dynamically discover, research, and register APIs. Ask for data, Claude handles the rest.",
-    tech: ["TypeScript", "Node.js", "MCP SDK"],
-    github: "https://github.com/tarann26/invoke",
-    visualType: "invoke",
+      "Wraps torch.distributed, NCCL, and Kubernetes scheduling behind a declarative TrainingSpec with automatic fault recovery and built-in profiling.",
+    tech: ["Python", "PyTorch", "Kubernetes", "Flyte", "Prometheus"],
+    github: "https://github.com/tarann26/flytetorch",
+    visualType: "flyte",
     tier: 1,
   },
   {
@@ -44,24 +51,35 @@ const projects: Project[] = [
     award: "Best Senior Project W25",
   },
   {
-    id: "crypto-tracker",
-    name: "Crypto-Tracker",
-    tagline: "Blockchain analytics with leader detection",
+    id: "cairn",
+    name: "Cairn",
+    tagline: "High-performance block deduplication engine in C++17",
     description:
-      "Full-stack crypto platform with real-time dashboards, Solana wallet monitoring, and trading pattern analysis.",
-    tech: ["React", "Supabase", "Solana Web3.js", "Python"],
-    github: "https://github.com/tarann26/Crypto-Tracker",
-    visualType: "crypto-tracker",
+      "Rabin-fingerprint content-defined chunking, SHA-256 content addressing, lock-free sharded index. ~500 MB/s chunking, 65% dedup ratio.",
+    tech: ["C++17", "OpenSSL", "CMake", "ASan/TSan"],
+    visualType: "cairn",
     tier: 2,
   },
   {
-    id: "brainwave",
-    name: "BrainWave",
-    tagline: "Real-time peer-to-peer learning platform",
+    id: "orderbook",
+    name: "OrderBook",
+    tagline: "Real-time limit order book and matching engine",
     description:
-      "Collaborative study platform with WebRTC conferencing, shared whiteboard, quizzes, and AI assistant.",
-    tech: ["React", "Supabase", "WebRTC", "OpenRouter"],
-    visualType: "brainwave",
+      "Price-time priority matching, B-tree backed price levels, Decimal arithmetic throughout. 180-test suite.",
+    tech: ["Python 3.11", "Textual", "sortedcontainers", "asyncio"],
+    github: "https://github.com/tarann26/orderbook",
+    visualType: "orderbook",
+    tier: 2,
+  },
+  {
+    id: "invoke",
+    name: "Invoke",
+    tagline: "Universal API-to-tool bridge for Claude",
+    description:
+      "MCP server that lets Claude dynamically discover, research, and register APIs. Ask for data, Claude handles the rest.",
+    tech: ["TypeScript", "Node.js", "MCP SDK"],
+    github: "https://github.com/tarann26/invoke",
+    visualType: "invoke",
     tier: 2,
   },
 ];
@@ -174,7 +192,7 @@ export function Projects() {
         </div>
 
         {/* Tier 2 - Medium cards */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           {tier2.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}

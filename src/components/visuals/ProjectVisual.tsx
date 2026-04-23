@@ -1,9 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
 
-type ProjectType = "invoke" | "seecare" | "crypto-tracker" | "brainwave";
+type ProjectType =
+  | "invoke"
+  | "seecare"
+  | "crypto-tracker"
+  | "brainwave"
+  | "flyte"
+  | "cairn"
+  | "orderbook";
 
 interface ProjectVisualProps {
   type: ProjectType;
@@ -410,12 +416,436 @@ function BrainWaveVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
+// Flyte: Central orchestrator with ring of worker nodes, animated gradient sync
+function FlyteVisual({ isHovered }: { isHovered: boolean }) {
+  // 6 worker nodes evenly spaced on a circle of radius 30 around (50, 50)
+  const workers = Array.from({ length: 6 }, (_, i) => {
+    const angle = (i / 6) * Math.PI * 2 - Math.PI / 2;
+    return {
+      x: 50 + 30 * Math.cos(angle),
+      y: 50 + 30 * Math.sin(angle),
+    };
+  });
+
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full">
+      {/* Ring-connection lines between adjacent workers (gradient sync) */}
+      {workers.map((w, i) => {
+        const next = workers[(i + 1) % workers.length];
+        return (
+          <motion.line
+            key={`ring-${i}`}
+            x1={w.x}
+            y1={w.y}
+            x2={next.x}
+            y2={next.y}
+            stroke="#06b6d4"
+            strokeWidth="0.5"
+            strokeDasharray="2 2"
+            initial={{ opacity: 0.2 }}
+            animate={{ opacity: isHovered ? 0.7 : 0.3 }}
+          />
+        );
+      })}
+
+      {/* Spoke lines from orchestrator to each worker */}
+      {workers.map((w, i) => (
+        <motion.line
+          key={`spoke-${i}`}
+          x1={50}
+          y1={50}
+          x2={w.x}
+          y2={w.y}
+          stroke="#06b6d4"
+          strokeWidth="0.5"
+          initial={{ opacity: 0.3 }}
+          animate={{ opacity: isHovered ? 0.6 : 0.35 }}
+        />
+      ))}
+
+      {/* All-reduce pulse: packet travels around the ring */}
+      {workers.map((w, i) => {
+        const next = workers[(i + 1) % workers.length];
+        return (
+          <motion.circle
+            key={`packet-${i}`}
+            r="1.5"
+            fill="#f59e0b"
+            initial={{ cx: w.x, cy: w.y, opacity: 0 }}
+            animate={{
+              cx: [w.x, next.x],
+              cy: [w.y, next.y],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 0.5,
+              delay: i * 0.15,
+              repeat: Infinity,
+              repeatDelay: 2.4,
+              ease: "linear",
+            }}
+          />
+        );
+      })}
+
+      {/* Worker nodes */}
+      {workers.map((w, i) => (
+        <motion.circle
+          key={`worker-${i}`}
+          cx={w.x}
+          cy={w.y}
+          r="4"
+          fill="#141414"
+          stroke="#06b6d4"
+          strokeWidth="1.2"
+          animate={{ scale: [1, 1.15, 1] }}
+          transition={{
+            duration: 0.3,
+            delay: i * 0.08,
+            repeat: Infinity,
+            repeatDelay: 2.4,
+          }}
+        />
+      ))}
+
+      {/* Central orchestrator */}
+      <motion.rect
+        x={42}
+        y={42}
+        width={16}
+        height={16}
+        rx={2}
+        fill="#06b6d4"
+        stroke="#06b6d4"
+        strokeWidth="1"
+        animate={{ scale: isHovered ? [1, 1.05, 1] : 1 }}
+        transition={{ duration: 1, repeat: isHovered ? Infinity : 0 }}
+      />
+      <text
+        x={50}
+        y={53}
+        textAnchor="middle"
+        fill="#0a0a0a"
+        fontSize="5"
+        fontFamily="monospace"
+        fontWeight="bold"
+      >
+        K8s
+      </text>
+    </svg>
+  );
+}
+
+// Cairn: Stream of raw blocks on the left collapsing into deduplicated set on the right
+function CairnVisual({ isHovered }: { isHovered: boolean }) {
+  // 6 raw blocks on the left, some duplicated (same color = same content)
+  const rawBlocks = [
+    { y: 15, color: "#06b6d4" },
+    { y: 27, color: "#f59e0b" },
+    { y: 39, color: "#06b6d4" }, // dup of first
+    { y: 51, color: "#22c55e" },
+    { y: 63, color: "#f59e0b" }, // dup of second
+    { y: 75, color: "#06b6d4" }, // dup of first
+  ];
+
+  // 3 unique blocks on the right (one per distinct color)
+  const dedupBlocks = [
+    { y: 27, color: "#06b6d4" },
+    { y: 45, color: "#f59e0b" },
+    { y: 63, color: "#22c55e" },
+  ];
+
+  // Mapping from raw index to target dedup block index
+  const mapping = [0, 1, 0, 2, 1, 0];
+
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full">
+      {/* Raw blocks column (left) */}
+      {rawBlocks.map((b, i) => (
+        <motion.rect
+          key={`raw-${i}`}
+          x={10}
+          y={b.y}
+          width={14}
+          height={10}
+          rx={1}
+          fill={b.color}
+          opacity={0.85}
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 10, opacity: 0.85 }}
+          transition={{ delay: i * 0.08, duration: 0.4 }}
+        />
+      ))}
+
+      {/* Flow arrows from raw to dedup */}
+      {rawBlocks.map((b, i) => {
+        const target = dedupBlocks[mapping[i]];
+        return (
+          <motion.line
+            key={`flow-${i}`}
+            x1={24}
+            y1={b.y + 5}
+            x2={70}
+            y2={target.y + 5}
+            stroke={b.color}
+            strokeWidth="0.5"
+            strokeDasharray="2 2"
+            initial={{ opacity: 0, pathLength: 0 }}
+            animate={{
+              opacity: isHovered ? 0.6 : 0.35,
+              pathLength: 1,
+            }}
+            transition={{ delay: 0.4 + i * 0.08, duration: 0.5 }}
+          />
+        );
+      })}
+
+      {/* Dedup blocks column (right) */}
+      {dedupBlocks.map((b, i) => (
+        <motion.g key={`dedup-${i}`}>
+          <motion.rect
+            x={70}
+            y={b.y}
+            width={14}
+            height={10}
+            rx={1}
+            fill={b.color}
+            opacity={0.95}
+            stroke="#fafafa"
+            strokeWidth="0.3"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 70, opacity: 0.95 }}
+            transition={{ delay: 0.6 + i * 0.1, duration: 0.4 }}
+          />
+          {/* Hash label above each dedup block */}
+          <motion.text
+            x={77}
+            y={b.y - 2}
+            textAnchor="middle"
+            fill="#a1a1aa"
+            fontSize="3"
+            fontFamily="monospace"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 0.9 : 0.5 }}
+            transition={{ delay: 0.9 }}
+          >
+            sha256
+          </motion.text>
+        </motion.g>
+      ))}
+
+      {/* Column labels */}
+      <text
+        x={17}
+        y={92}
+        textAnchor="middle"
+        fill="#a1a1aa"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        raw
+      </text>
+      <text
+        x={77}
+        y={92}
+        textAnchor="middle"
+        fill="#22c55e"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        dedup
+      </text>
+
+      {/* Compression ratio indicator */}
+      <motion.text
+        x={50}
+        y={10}
+        textAnchor="middle"
+        fill="#06b6d4"
+        fontSize="5"
+        fontFamily="monospace"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0.6 }}
+      >
+        6 → 3
+      </motion.text>
+    </svg>
+  );
+}
+
+// OrderBook: Bid/ask ladder with a match event in the middle
+function OrderBookVisual({ isHovered }: { isHovered: boolean }) {
+  // Asks (sell orders), descending price top→bottom
+  const asks = [
+    { price: 105, size: 20 },
+    { price: 104, size: 35 },
+    { price: 103, size: 50 },
+    { price: 102, size: 25 },
+  ];
+  // Bids (buy orders), descending price top→bottom
+  const bids = [
+    { price: 101, size: 30 },
+    { price: 100, size: 45 },
+    { price: 99, size: 40 },
+    { price: 98, size: 20 },
+  ];
+
+  const askRed = "#ef4444";
+  const bidGreen = "#22c55e";
+
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full">
+      {/* Header labels */}
+      <text
+        x={8}
+        y={10}
+        fill="#a1a1aa"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        price
+      </text>
+      <text
+        x={90}
+        y={10}
+        textAnchor="end"
+        fill="#a1a1aa"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        size
+      </text>
+
+      {/* Asks (top half) */}
+      {asks.map((a, i) => {
+        const y = 14 + i * 8;
+        const barWidth = a.size * 0.6;
+        return (
+          <motion.g key={`ask-${i}`}>
+            <motion.rect
+              x={50 - barWidth}
+              y={y}
+              width={barWidth}
+              height={6}
+              fill={askRed}
+              opacity={0.25}
+              initial={{ width: 0 }}
+              animate={{ width: barWidth }}
+              transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+            />
+            <text
+              x={8}
+              y={y + 4.5}
+              fill={askRed}
+              fontSize="4"
+              fontFamily="monospace"
+            >
+              {a.price.toFixed(2)}
+            </text>
+            <text
+              x={90}
+              y={y + 4.5}
+              textAnchor="end"
+              fill={askRed}
+              fontSize="4"
+              fontFamily="monospace"
+              opacity={0.85}
+            >
+              {a.size}
+            </text>
+          </motion.g>
+        );
+      })}
+
+      {/* Spread / match event row (center) */}
+      <motion.rect
+        x={6}
+        y={47}
+        width={88}
+        height={6}
+        fill="#06b6d4"
+        opacity={0.15}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? [0.15, 0.5, 0.15] : 0.15 }}
+        transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
+      />
+      <text
+        x={50}
+        y={52}
+        textAnchor="middle"
+        fill="#06b6d4"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        -- spread --
+      </text>
+
+      {/* Bids (bottom half) */}
+      {bids.map((b, i) => {
+        const y = 56 + i * 8;
+        const barWidth = b.size * 0.6;
+        return (
+          <motion.g key={`bid-${i}`}>
+            <motion.rect
+              x={50}
+              y={y}
+              width={barWidth}
+              height={6}
+              fill={bidGreen}
+              opacity={0.25}
+              initial={{ width: 0 }}
+              animate={{ width: barWidth }}
+              transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+            />
+            <text
+              x={8}
+              y={y + 4.5}
+              fill={bidGreen}
+              fontSize="4"
+              fontFamily="monospace"
+            >
+              {b.price.toFixed(2)}
+            </text>
+            <text
+              x={90}
+              y={y + 4.5}
+              textAnchor="end"
+              fill={bidGreen}
+              fontSize="4"
+              fontFamily="monospace"
+              opacity={0.85}
+            >
+              {b.size}
+            </text>
+          </motion.g>
+        );
+      })}
+
+      {/* Incoming market order pulse (hover only) */}
+      {isHovered && (
+        <motion.circle
+          cx={50}
+          cy={50}
+          r={2}
+          fill="#f59e0b"
+          initial={{ scale: 1, opacity: 1 }}
+          animate={{ scale: [1, 6], opacity: [1, 0] }}
+          transition={{ duration: 1.2, repeat: Infinity }}
+        />
+      )}
+    </svg>
+  );
+}
+
 export function ProjectVisual({ type, isHovered = false }: ProjectVisualProps) {
   const visuals: Record<ProjectType, React.ReactNode> = {
     invoke: <InvokeVisual isHovered={isHovered} />,
     seecare: <SeeCareVisual isHovered={isHovered} />,
     "crypto-tracker": <CryptoTrackerVisual isHovered={isHovered} />,
     brainwave: <BrainWaveVisual isHovered={isHovered} />,
+    flyte: <FlyteVisual isHovered={isHovered} />,
+    cairn: <CairnVisual isHovered={isHovered} />,
+    orderbook: <OrderBookVisual isHovered={isHovered} />,
   };
 
   return (
