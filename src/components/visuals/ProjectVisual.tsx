@@ -536,23 +536,139 @@ function FlyteTorchVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
+// DedupCore: Stream of raw blocks on the left collapsing into deduplicated set on the right
 function DedupCoreVisual({ isHovered }: { isHovered: boolean }) {
+  // 6 raw blocks on the left, some duplicated (same color = same content)
+  const rawBlocks = [
+    { y: 15, color: "#06b6d4" },
+    { y: 27, color: "#f59e0b" },
+    { y: 39, color: "#06b6d4" }, // dup of first
+    { y: 51, color: "#22c55e" },
+    { y: 63, color: "#f59e0b" }, // dup of second
+    { y: 75, color: "#06b6d4" }, // dup of first
+  ];
+
+  // 3 unique blocks on the right (one per distinct color)
+  const dedupBlocks = [
+    { y: 27, color: "#06b6d4" },
+    { y: 45, color: "#f59e0b" },
+    { y: 63, color: "#22c55e" },
+  ];
+
+  // Mapping from raw index to target dedup block index
+  const mapping = [0, 1, 0, 2, 1, 0];
+
   return (
     <svg viewBox="0 0 100 100" className="w-full h-full">
-      {[0, 1, 2, 3].map((i) => (
-        <rect
-          key={i}
-          x={10 + i * 22}
-          y={30}
-          width="16"
-          height="40"
-          rx="2"
-          fill="#10b981"
-          opacity={isHovered ? 0.8 - i * 0.1 : 0.4}
+      {/* Raw blocks column (left) */}
+      {rawBlocks.map((b, i) => (
+        <motion.rect
+          key={`raw-${i}`}
+          x={10}
+          y={b.y}
+          width={14}
+          height={10}
+          rx={1}
+          fill={b.color}
+          opacity={0.85}
+          initial={{ x: -20, opacity: 0 }}
+          animate={{ x: 10, opacity: 0.85 }}
+          transition={{ delay: i * 0.08, duration: 0.4 }}
         />
       ))}
-      <line x1="10" y1="80" x2="90" y2="80" stroke="#10b981" strokeWidth="1" opacity="0.5" />
-      <text x="50" y="95" textAnchor="middle" fontSize="7" fill="#6ee7b7">dedup</text>
+
+      {/* Flow arrows from raw to dedup */}
+      {rawBlocks.map((b, i) => {
+        const target = dedupBlocks[mapping[i]];
+        return (
+          <motion.line
+            key={`flow-${i}`}
+            x1={24}
+            y1={b.y + 5}
+            x2={70}
+            y2={target.y + 5}
+            stroke={b.color}
+            strokeWidth="0.5"
+            strokeDasharray="2 2"
+            initial={{ opacity: 0, pathLength: 0 }}
+            animate={{
+              opacity: isHovered ? 0.6 : 0.35,
+              pathLength: 1,
+            }}
+            transition={{ delay: 0.4 + i * 0.08, duration: 0.5 }}
+          />
+        );
+      })}
+
+      {/* Dedup blocks column (right) */}
+      {dedupBlocks.map((b, i) => (
+        <motion.g key={`dedup-${i}`}>
+          <motion.rect
+            x={70}
+            y={b.y}
+            width={14}
+            height={10}
+            rx={1}
+            fill={b.color}
+            opacity={0.95}
+            stroke="#fafafa"
+            strokeWidth="0.3"
+            initial={{ x: 100, opacity: 0 }}
+            animate={{ x: 70, opacity: 0.95 }}
+            transition={{ delay: 0.6 + i * 0.1, duration: 0.4 }}
+          />
+          {/* Hash label above each dedup block */}
+          <motion.text
+            x={77}
+            y={b.y - 2}
+            textAnchor="middle"
+            fill="#a1a1aa"
+            fontSize="3"
+            fontFamily="monospace"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 0.9 : 0.5 }}
+            transition={{ delay: 0.9 }}
+          >
+            sha256
+          </motion.text>
+        </motion.g>
+      ))}
+
+      {/* Column labels */}
+      <text
+        x={17}
+        y={92}
+        textAnchor="middle"
+        fill="#a1a1aa"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        raw
+      </text>
+      <text
+        x={77}
+        y={92}
+        textAnchor="middle"
+        fill="#22c55e"
+        fontSize="4"
+        fontFamily="monospace"
+      >
+        dedup
+      </text>
+
+      {/* Compression ratio indicator */}
+      <motion.text
+        x={50}
+        y={10}
+        textAnchor="middle"
+        fill="#06b6d4"
+        fontSize="5"
+        fontFamily="monospace"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isHovered ? 1 : 0.6 }}
+      >
+        6 → 3
+      </motion.text>
     </svg>
   );
 }
