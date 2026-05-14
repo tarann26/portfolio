@@ -59,7 +59,7 @@ export function About() {
                   <span className="font-mono text-3xl text-accent-cyan">TA</span>
                 </div>
                 <span className="text-xs text-text-secondary font-mono">
-                  // avatar coming soon
+                  {"// avatar coming soon"}
                 </span>
               </div>
             </div>

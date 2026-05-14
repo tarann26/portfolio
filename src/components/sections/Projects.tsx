@@ -16,6 +16,7 @@ interface Project {
   github?: string;
   live?: string;
   visualType:
+    | "hivemind"
     | "invoke"
     | "seecare"
     | "crypto-tracker"
@@ -28,6 +29,17 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: "hivemind",
+    name: "HiveMind",
+    tagline: "Multi-agent prediction market simulation environment",
+    description:
+      "Simulates agent swarms that research real-world signals, trade against LMSR markets, and surface consensus forecasts through a live dashboard.",
+    tech: ["Next.js", "FastAPI", "LangChain", "OpenRouter", "WebSockets"],
+    github: "https://github.com/Not-Ethan/hivemind/tree/master",
+    visualType: "hivemind",
+    tier: 1,
+  },
   {
     id: "flyte",
     name: "Flyte",
@@ -176,24 +188,13 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 export function Projects() {
-  const tier1 = projects.filter((p) => p.tier === 1);
-  const tier2 = projects.filter((p) => p.tier === 2);
-
   return (
     <section id="projects" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <SectionHeader title="PROJECTS" />
 
-        {/* Tier 1 - Large cards */}
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          {tier1.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-
-        {/* Tier 2 - Medium cards */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {tier2.map((project) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>

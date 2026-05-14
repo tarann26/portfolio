@@ -43,7 +43,7 @@ export function Shipped() {
                     shipped_
                   </h3>
                   <span className="font-mono text-xs text-accent-amber">
-                    // live · 2026
+                    {"// live · 2026"}
                   </span>
                 </div>
 

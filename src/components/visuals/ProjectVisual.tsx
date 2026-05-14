@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 type ProjectType =
+  | "hivemind"
   | "invoke"
   | "seecare"
   | "crypto-tracker"
@@ -14,6 +15,247 @@ type ProjectType =
 interface ProjectVisualProps {
   type: ProjectType;
   isHovered?: boolean;
+}
+
+// HiveMind: Seed inputs creating a simulated world with agent markets and forecasts
+function HiveMindVisual({ isHovered }: { isHovered: boolean }) {
+  const seedRows = [
+    { y: 24, label: "news", width: 19 },
+    { y: 31, label: "policy", width: 14 },
+    { y: 38, label: "market", width: 22 },
+  ];
+
+  const agents = [
+    { x: 42, y: 32, dx: -2, dy: 2, color: "#06b6d4" },
+    { x: 50, y: 27, dx: 2, dy: -1, color: "#22c55e" },
+    { x: 59, y: 34, dx: 1, dy: 3, color: "#f59e0b" },
+    { x: 39, y: 46, dx: 3, dy: -2, color: "#22c55e" },
+    { x: 51, y: 43, dx: -2, dy: 2, color: "#06b6d4" },
+    { x: 63, y: 49, dx: -3, dy: -1, color: "#06b6d4" },
+    { x: 44, y: 60, dx: 2, dy: -3, color: "#f59e0b" },
+    { x: 56, y: 62, dx: -1, dy: -2, color: "#22c55e" },
+    { x: 65, y: 61, dx: 2, dy: 2, color: "#06b6d4" },
+    { x: 48, y: 51, dx: -3, dy: 1, color: "#a1a1aa" },
+  ];
+
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full">
+      <defs>
+        <radialGradient id="hivemind-world" cx="50%" cy="45%" r="55%">
+          <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.22" />
+          <stop offset="65%" stopColor="#06b6d4" stopOpacity="0.06" />
+          <stop offset="100%" stopColor="#0a0a0a" stopOpacity="0" />
+        </radialGradient>
+        <linearGradient id="hivemind-forecast" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0%" stopColor="#06b6d4" />
+          <stop offset="55%" stopColor="#22c55e" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </linearGradient>
+      </defs>
+
+      {/* Seed material panel */}
+      <rect
+        x="7"
+        y="13"
+        width="26"
+        height="37"
+        rx="2"
+        fill="#141414"
+        stroke="#262626"
+        strokeWidth="0.7"
+      />
+      <text x="11" y="20" fill="#a1a1aa" fontSize="3.2" fontFamily="monospace">
+        seed
+      </text>
+      {seedRows.map((row, i) => (
+        <motion.g key={row.label}>
+          <rect x="11" y={row.y + 4} width="18" height="2" rx="0.6" fill="#262626" />
+          <motion.rect
+            x="11"
+            y={row.y + 4}
+            width={row.width}
+            height="2"
+            rx="0.6"
+            fill={i === 0 ? "#06b6d4" : i === 1 ? "#22c55e" : "#f59e0b"}
+            initial={{ scaleX: 0.35 }}
+            animate={{ scaleX: isHovered ? [0.35, 1, 0.65] : 0.65 }}
+            transition={{
+              duration: 1.2,
+              delay: i * 0.18,
+              repeat: isHovered ? Infinity : 0,
+              repeatDelay: 1.2,
+            }}
+            style={{ transformOrigin: "11px center" }}
+          />
+          <text x="11" y={row.y + 2} fill="#a1a1aa" fontSize="2.5" fontFamily="monospace">
+            {row.label}
+          </text>
+        </motion.g>
+      ))}
+
+      {/* Seed packets entering the digital world */}
+      {seedRows.map((row, i) => (
+        <motion.circle
+          key={`seed-packet-${row.label}`}
+          r="1.2"
+          fill={i === 0 ? "#06b6d4" : i === 1 ? "#22c55e" : "#f59e0b"}
+          initial={{ cx: 30, cy: row.y + 5, opacity: 0 }}
+          animate={{
+            cx: [30, 39, 48],
+            cy: [row.y + 5, 35 + i * 7, 42],
+            opacity: [0, 1, 0],
+          }}
+          transition={{
+            duration: 1.1,
+            delay: i * 0.25,
+            repeat: Infinity,
+            repeatDelay: 2.2,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* Parallel digital world */}
+      <motion.ellipse
+        cx="52"
+        cy="48"
+        rx="22"
+        ry="30"
+        fill="url(#hivemind-world)"
+        stroke="#06b6d4"
+        strokeWidth="0.9"
+        strokeDasharray="3 2"
+        animate={{ rotate: isHovered ? [0, 1.5, -1.5, 0] : 0 }}
+        transition={{ duration: 4, repeat: isHovered ? Infinity : 0 }}
+        style={{ transformOrigin: "52px 48px" }}
+      />
+      <text x="43" y="27" fill="#06b6d4" fontSize="2.8" fontFamily="monospace">
+        sim.world
+      </text>
+
+      {/* Emergent agent swarm */}
+      {agents.map((agent, i) => (
+        <motion.g key={`${agent.x}-${agent.y}`}>
+          <motion.circle
+            cx={agent.x}
+            cy={agent.y}
+            r="1.2"
+            fill={agent.color}
+            opacity="0.75"
+            animate={{
+              cx: isHovered ? [agent.x, agent.x + agent.dx, agent.x] : agent.x,
+              cy: isHovered ? [agent.y, agent.y + agent.dy, agent.y] : agent.y,
+              opacity: isHovered ? [0.45, 1, 0.6] : 0.7,
+            }}
+            transition={{
+              duration: 1.8,
+              delay: i * 0.08,
+              repeat: isHovered ? Infinity : 0,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.circle
+            cx={agent.x}
+            cy={agent.y}
+            r="3.8"
+            fill="none"
+            stroke={agent.color}
+            strokeWidth="0.35"
+            opacity="0.25"
+            animate={{ scale: isHovered ? [0.8, 1.35, 0.8] : 1 }}
+            transition={{ duration: 1.8, delay: i * 0.08, repeat: isHovered ? Infinity : 0 }}
+          />
+        </motion.g>
+      ))}
+
+      {/* God-view intervention */}
+      <motion.path
+        d="M 45 12 L 52 20 L 59 12"
+        fill="none"
+        stroke="#f59e0b"
+        strokeWidth="1"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ opacity: 0.35, y: 0 }}
+        animate={{ opacity: isHovered ? [0.35, 1, 0.35] : 0.45, y: isHovered ? [0, 2, 0] : 0 }}
+        transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
+      />
+      <text x="44" y="10" fill="#f59e0b" fontSize="2.6" fontFamily="monospace">
+        what_if
+      </text>
+
+      {/* Prediction market panel */}
+      <rect
+        x="70"
+        y="18"
+        width="23"
+        height="31"
+        rx="2"
+        fill="#141414"
+        stroke="#262626"
+        strokeWidth="0.7"
+      />
+      <text x="74" y="25" fill="#a1a1aa" fontSize="3" fontFamily="monospace">
+        market
+      </text>
+      <text x="75" y="35" fill="#22c55e" fontSize="5" fontFamily="monospace" fontWeight="bold">
+        68%
+      </text>
+      <rect x="74" y="39" width="15" height="2.8" rx="0.8" fill="#262626" />
+      <motion.circle
+        cx="84"
+        cy="60"
+        r="1.3"
+        fill="#22c55e"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 1, 0], cx: [66, 74, 81], cy: [53, 46, 35] }}
+        transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 2 }}
+      />
+      <motion.rect
+        x="74"
+        y="39"
+        width="10"
+        height="2.8"
+        rx="0.8"
+        fill="#22c55e"
+        animate={{ width: isHovered ? [10, 14, 12] : 10 }}
+        transition={{ duration: 1.3, repeat: isHovered ? Infinity : 0 }}
+      />
+      <rect x="74" y="44" width="15" height="2.8" rx="0.8" fill="#262626" />
+      <rect x="74" y="44" width="5" height="2.8" rx="0.8" fill="#ef4444" opacity="0.8" />
+
+      {/* Forecast report */}
+      <rect
+        x="11"
+        y="76"
+        width="78"
+        height="12"
+        rx="2"
+        fill="#141414"
+        stroke="#262626"
+        strokeWidth="0.7"
+      />
+      <text x="15" y="84" fill="#a1a1aa" fontSize="3" fontFamily="monospace">
+        forecast
+      </text>
+      <path
+        d="M 36 83 C 43 79, 47 86, 53 82 S 64 75, 73 80 S 82 78, 87 73"
+        fill="none"
+        stroke="#262626"
+        strokeWidth="1"
+      />
+      <motion.path
+        d="M 36 83 C 43 79, 47 86, 53 82 S 64 75, 73 80 S 82 78, 87 73"
+        fill="none"
+        stroke="url(#hivemind-forecast)"
+        strokeWidth="1.2"
+        strokeLinecap="round"
+        initial={{ pathLength: 0, opacity: 0.5 }}
+        animate={{ pathLength: isHovered ? 1 : 0.7, opacity: 0.9 }}
+        transition={{ duration: 1.2 }}
+      />
+    </svg>
+  );
 }
 
 // Invoke: Central hub sending requests to scattered API endpoints, responses coming back
@@ -839,6 +1081,7 @@ function OrderBookVisual({ isHovered }: { isHovered: boolean }) {
 
 export function ProjectVisual({ type, isHovered = false }: ProjectVisualProps) {
   const visuals: Record<ProjectType, React.ReactNode> = {
+    hivemind: <HiveMindVisual isHovered={isHovered} />,
     invoke: <InvokeVisual isHovered={isHovered} />,
     seecare: <SeeCareVisual isHovered={isHovered} />,
     "crypto-tracker": <CryptoTrackerVisual isHovered={isHovered} />,

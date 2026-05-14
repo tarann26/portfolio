@@ -9,6 +9,7 @@ export interface ProjectData {
   github?: string;
   live?: string;
   visualType:
+    | "hivemind"
     | "invoke"
     | "seecare"
     | "crypto-tracker"
@@ -20,6 +21,37 @@ export interface ProjectData {
 }
 
 export const projectsData: Record<string, ProjectData> = {
+  hivemind: {
+    name: "HiveMind",
+    tagline: "Multi-agent prediction market simulation environment",
+    description:
+      "A real-life simulation environment where AI agents research real-world signals, trade in prediction markets, and expose the reasoning behind their forecasts.",
+    challenge:
+      "Prediction is usually trapped between static reports and single-model guesses. Decision-makers need a way to watch competing assumptions interact, update, and reveal where consensus is actually forming.",
+    solution:
+      "Built a full-stack simulation with role-specialized agents, sealed research phases, Tavily-powered web/news search, OpenRouter models, LMSR market pricing, reasoning logs, weighted consensus, and real-time WebSocket updates.",
+    impact:
+      "Turns uncertain questions into interactive markets where users can inspect evidence, track agent positions, and rehearse what-if scenarios before acting.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "FastAPI",
+      "SQLAlchemy/SQLite",
+      "LangChain/LangGraph",
+      "OpenRouter",
+      "WebSockets",
+    ],
+    github: "https://github.com/Not-Ethan/hivemind/tree/master",
+    visualType: "hivemind",
+    features: [
+      "Role-specialized agents with independent research strategies",
+      "LMSR prediction market engine with price history",
+      "Sealed research phase before agents can see market prices",
+      "Tavily web/news search filtered by simulated knowledge cutoff",
+      "Live reasoning, trade, and status updates over WebSockets",
+      "Position-weighted consensus and agent PnL tracking",
+    ],
+  },
   invoke: {
     name: "Invoke",
     tagline: "Universal API-to-tool bridge for Claude",

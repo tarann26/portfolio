@@ -10,9 +10,11 @@ interface UsesItem {
 }
 
 const setup: UsesItem[] = [
-  { label: "editor", value: "vscode" },
-  { label: "terminal", value: "native / integrated" },
-  { label: "os", value: "macos" },
+  { label: "editor", value: "VS Code, Claude Code, Codex CLI" },
+  { label: "terminal", value: "zsh, bash scripts, integrated terminals" },
+  { label: "os", value: "macOS locally, Linux on servers" },
+  { label: "workflow", value: "read docs, build small repros, ship the useful part" },
+  { label: "debugging", value: "logs, network traces, API payload inspection" },
 ];
 
 interface StackItem {
@@ -21,16 +23,36 @@ interface StackItem {
 }
 
 const stack: StackItem[] = [
-  { category: "frontend", tools: "next.js, tailwind, framer" },
-  { category: "backend", tools: "fastapi, supabase" },
-  { category: "ai/ml", tools: "pytorch, langchain" },
-  { category: "infra", tools: "vercel, aws, docker" },
+  {
+    category: "frontend",
+    tools: "Next.js, React, Tailwind, Framer Motion, Electron",
+  },
+  {
+    category: "backend_apis",
+    tools: "FastAPI, Express, Fastify, REST, OAuth, webhooks",
+  },
+  {
+    category: "agentic_ai",
+    tools: "Claude Code, Codex, LangChain, LangGraph, OpenRouter, n8n",
+  },
+  {
+    category: "data_search",
+    tools: "PostgreSQL, Supabase, pgvector, MongoDB, Redis, ChromaDB",
+  },
+  {
+    category: "automation",
+    tools: "browser automation, form filling, background jobs, Redis queues",
+  },
+  {
+    category: "infra",
+    tools: "AWS, Docker, Nginx, GitHub Actions, Vercel, Linux",
+  },
 ];
 
 export function Uses() {
   return (
     <section id="uses" className="py-20 px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <SectionHeader title="USES" />
 
         <motion.div
@@ -43,6 +65,7 @@ export function Uses() {
             <div className="grid md:grid-cols-2 gap-8">
               {/* Setup */}
               <div>
+                <p className="text-text-secondary mb-3">working setup</p>
                 {setup.map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -50,9 +73,9 @@ export function Uses() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
-                    className="flex gap-4 py-1"
+                    className="flex items-start gap-4 py-1"
                   >
-                    <span className="text-text-secondary w-24">{item.label}</span>
+                    <span className="text-text-secondary w-24 shrink-0">{item.label}</span>
                     <span className="text-accent-cyan">→</span>
                     <span className="text-text-primary">{item.value}</span>
                   </motion.div>
@@ -74,7 +97,7 @@ export function Uses() {
                     <span className="text-text-secondary">
                       {i === stack.length - 1 ? "└──" : "├──"}
                     </span>
-                    <span className="text-accent-cyan">{item.category}</span>
+                    <span className="text-accent-cyan min-w-28">{item.category}</span>
                     <span className="text-text-secondary">→</span>
                     <span className="text-text-primary">{item.tools}</span>
                   </motion.div>
