@@ -65,6 +65,13 @@ export default function RootLayout({
       >
         <div className="noise-overlay" aria-hidden="true" />
         {children}
+        {/* TAMPR live snippet validation — preview-branch only, never merged to main */}
+        <script
+          async
+          src="https://tampr.aionxxxi.uk/v0/s.js?i=2"
+          data-tampr-key="LDtv3LN3uwqKk2v4Y_xhLkzk_fQEKMACXPOz8_taYkg"
+          data-tampr-salt="PL_e4e8lP7Ab3gBY6f1lLA"
+        />
         <Analytics />
       </body>
     </html>

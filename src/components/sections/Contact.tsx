@@ -77,6 +77,63 @@ function ContactLink({ link }: { link: ContactLink }) {
   );
 }
 
+// TAMPR snippet API (window.tampr is installed by the snippet <script> in layout.tsx).
+type TamprApi = (cmd: string, ...args: unknown[]) => void;
+const tampr = (): TamprApi | undefined =>
+  typeof window === "undefined"
+    ? undefined
+    : (window as Window & { tampr?: TamprApi }).tampr;
+
+function SayHi() {
+  const [email, setEmail] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const value = email.trim();
+    if (!value) return;
+    tampr()?.("identify", value);
+    setSent(true);
+    setEmail("");
+    setTimeout(() => setSent(false), 3000);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="mt-4 flex flex-col gap-2 font-mono text-sm">
+      <label htmlFor="sayhi-email" className="text-text-secondary">
+        <span className="text-accent-cyan">&gt;</span> say hi
+      </label>
+      <div className="flex items-center gap-2">
+        <input
+          id="sayhi-email"
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="you@example.com"
+          className="flex-1 bg-transparent border border-text-secondary/40 rounded px-3 py-2 text-text-primary placeholder:text-text-secondary/50 focus:border-accent-cyan focus:outline-none transition-colors"
+        />
+        <button
+          type="submit"
+          className="px-4 py-2 border border-accent-cyan text-accent-cyan rounded hover:bg-accent-cyan/10 transition-colors whitespace-nowrap"
+        >
+          [send]
+        </button>
+      </div>
+      {sent && (
+        <motion.span
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="text-green-500 flex items-center gap-1"
+        >
+          <Check size={14} />
+          thanks — talk soon!
+        </motion.span>
+      )}
+    </form>
+  );
+}
+
 export function Contact() {
   return (
     <section id="contact" className="py-20 px-4">
@@ -106,6 +163,7 @@ export function Contact() {
               <motion.a
                 href="/resume.pdf"
                 download
+                onClick={() => tampr()?.("track", "activated")}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-2 mt-4 px-4 py-2 border border-accent-cyan text-accent-cyan rounded hover:bg-accent-cyan/10 transition-colors font-mono text-sm"
@@ -113,6 +171,8 @@ export function Contact() {
                 <FileDown size={16} />
                 [download resume.pdf]
               </motion.a>
+
+              <SayHi />
             </div>
           </TerminalWindow>
         </motion.div>
