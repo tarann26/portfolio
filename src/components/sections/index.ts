@@ -2,6 +2,7 @@ export { Hero } from "./Hero";
 export { Shipped } from "./Shipped";
 export { Experience } from "./Experience";
 export { Projects } from "./Projects";
+export { OpenSource } from "./OpenSource";
 export { Now } from "./Now";
 export { Skills } from "./Skills";
 export { Uses } from "./Uses";

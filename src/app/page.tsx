@@ -3,6 +3,7 @@ import {
   Shipped,
   Experience,
   Projects,
+  OpenSource,
   Now,
   Skills,
   Uses,
@@ -16,6 +17,7 @@ export default function Home() {
       <Shipped />
       <Experience />
       <Projects />
+      <OpenSource />
       <Now />
       <Skills />
       <Uses />
