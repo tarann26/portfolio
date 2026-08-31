@@ -16,9 +16,33 @@ interface ExperienceItem {
 
 const experience: ExperienceItem[] = [
   {
+    company: "Heron",
+    role: "Co-Founder, CEO",
+    date: "Jul 2026 - Present",
+    scope: "Underwriting for money-back promotions",
+    link: "https://useheron.io",
+    points: [
+      "Building an underwriting platform for money-back promotions: a merchant refunds every qualifying customer if a public event happens, and Heron prices that trigger against live prediction markets, hedges the exposure, and keeps the spread.",
+      "Wrote the campaign calculator that turns capacity, per-head cap, COGS, and margin into a quote, the merchant's projected net, and the promotion's cost expressed as a flat discount.",
+      "Ran go-to-market end to end: 300 sports bar owners contacted, 20 meetings taken, first verbal commitment for season open, and a 949-account qualified lead list across 23 states.",
+    ],
+    tags: ["prediction markets", "underwriting", "hedging", "pricing", "go-to-market"],
+  },
+  {
+    company: "PulseImaging.AI",
+    role: "Software Engineering Co-Op, part-time",
+    date: "Aug 2026 - Present",
+    scope: "Clinical and medical imaging software",
+    points: [
+      "Building software for AI-driven clinical and medical imaging applications, working with engineers, researchers, and clinical stakeholders.",
+      "Turning functional requirements into shipped features: user interfaces, integrations between application services and databases, plus testing, debugging, and performance work.",
+    ],
+    tags: ["healthcare", "medical imaging", "ai", "interfaces", "databases"],
+  },
+  {
     company: "Shipped.one",
     role: "Founder, Product Engineer",
-    date: "Mar 2026 - Present",
+    date: "Mar 2026 - May 2026",
     scope: "AI desktop job application platform",
     link: "https://shipped.one",
     points: [
@@ -28,7 +52,7 @@ const experience: ExperienceItem[] = [
     tags: ["electron", "typescript", "postgres", "redis", "browser agents"],
   },
   {
-    company: "Aonix.dev",
+    company: "Aionix.dev",
     role: "Founder",
     date: "Jun 2025 - Aug 2025",
     scope: "AI automation systems for U.S. companies",

@@ -30,8 +30,8 @@ const links: ContactLink[] = [
   },
   {
     label: "linkedin",
-    value: "linkedin.com/in/taranveer-anand",
-    href: "https://linkedin.com/in/taranveer-anand",
+    value: "linkedin.com/in/tarann26",
+    href: "https://linkedin.com/in/tarann26",
     icon: <Linkedin size={16} />,
   },
 ];
@@ -125,11 +125,10 @@ export function Contact() {
           transition={{ delay: 0.3 }}
           className="mt-8 text-center font-mono text-sm text-text-secondary"
         >
-          <p>{"// based in cleveland, oh"}</p>
+          <p>{"// based in san francisco, ca"}</p>
           <p>
             {"// "}
             <span className="text-green-500">●</span> open to opportunities
-            starting may 2026
           </p>
         </motion.div>
       </div>

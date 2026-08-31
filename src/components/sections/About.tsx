@@ -16,9 +16,9 @@ export function About() {
             <TerminalWindow title="cat about.txt">
               <div className="space-y-4 text-text-secondary">
                 <p>
-                  CS senior at{" "}
+                  CS grad from{" "}
                   <span className="text-accent-cyan">Case Western Reserve</span>{" "}
-                  with a habit of mass-producing side projects.
+                  (May 2026) with a habit of mass-producing side projects.
                 </p>
 
                 <p>
@@ -32,6 +32,8 @@ export function About() {
                 <div className="pt-4 border-t border-border mt-6">
                   <p className="font-mono text-sm">
                     <span className="text-text-secondary">Previously:</span>{" "}
+                    <span className="text-accent-cyan">Shipped.one</span>{" "}
+                    <span className="text-text-secondary">(co-founder)</span>,{" "}
                     <span className="text-accent-cyan">Aionix.dev</span>{" "}
                     <span className="text-text-secondary">(founder)</span>,{" "}
                     <span className="text-accent-cyan">Guru Amardass</span>{" "}
