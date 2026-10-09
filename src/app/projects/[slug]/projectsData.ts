@@ -77,15 +77,15 @@ export const projectsData: Record<string, ProjectData> = {
   },
   seecare: {
     name: "SeeCare",
-    tagline: "Privacy-first memory aid for dementia patients",
+    tagline: "Mobile memory aid for dementia support",
     description:
-      "A mobile application using facial recognition and conversation transcription to support dementia patients, reducing anxiety and caregiver burden through on-device processing and encrypted storage.",
+      "A mobile memory aid that combines facial recognition, conversation transcription, and summaries to support recall of people and prior interactions.",
     challenge:
       "Dementia patients often struggle to recognize familiar faces and remember recent conversations, causing anxiety for both patients and caregivers.",
     solution:
-      "Built a privacy-first mobile app that uses facial recognition to identify people and transcribes conversations for later review. All processing happens on-device to protect sensitive data.",
+      "Built a mobile app with AWS Rekognition and DeepFace for person identification, AssemblyAI for transcription and speaker diarization, and a FastAPI backend for storing and retrieving conversation context.",
     impact:
-      "Won Best Senior Project Award (Winter 2025). Demonstrated that AI can provide meaningful support for vulnerable populations while respecting privacy.",
+      "Received the Best Senior Project Award (Winter 2025) for a system combining person identification with searchable conversation context.",
     tech: ["FastAPI", "MongoDB", "AWS S3", "AWS Rekognition", "AssemblyAI", "Expo", "DeepFace"],
     visualType: "seecare",
     features: [
@@ -94,7 +94,7 @@ export const projectsData: Record<string, ProjectData> = {
       "Wake-word activated conversation capture",
       "Speaker diarization via AssemblyAI",
       "GPT-3.5 conversation summarization",
-      "Encrypted on-device storage",
+      "Searchable person and conversation context",
     ],
   },
   "crypto-tracker": {

@@ -92,8 +92,8 @@ export function Contact() {
           <TerminalWindow title="> echo $CONTACT_INFO">
             <div className="space-y-6">
               <p className="text-text-secondary">
-                Want to work together, hire me, or casually argue about something
-                illogical?
+                Get in touch about software engineering roles, product ideas,
+                or open-source collaboration.
               </p>
 
               <div className="space-y-1">
@@ -125,10 +125,10 @@ export function Contact() {
           transition={{ delay: 0.3 }}
           className="mt-8 text-center font-mono text-sm text-text-secondary"
         >
-          <p>{"// based in san francisco, ca"}</p>
+          <p>{"// based in cleveland, oh"}</p>
           <p>
             {"// "}
-            <span className="text-green-500">●</span> open to opportunities
+            <span className="text-green-500">●</span> open to software engineering opportunities
           </p>
         </motion.div>
       </div>

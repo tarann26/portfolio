@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 py-20">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20">
       <div className="w-full max-w-4xl">
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           {/* Terminal content */}
@@ -30,7 +30,7 @@ export function Hero() {
                   transition={{ delay: 0.4 }}
                   className="text-accent-cyan font-mono"
                 >
-                  turning caffeine into side projects
+                  Software engineer &amp; founder
                 </motion.p>
 
                 <motion.div
@@ -40,15 +40,40 @@ export function Hero() {
                   className="space-y-3 text-text-secondary"
                 >
                   <p>
-                    CS senior at{" "}
-                    <span className="text-accent-cyan">Case Western Reserve</span>{" "}
-                    with a habit of mass producing side projects.
+                    I build desktop applications, AI tools, and the systems
+                    behind them. My work spans medical imaging, browser
+                    automation, and financial technology.
                   </p>
 
                   <p>
-                    Currently: grinding guitar, and calculating expected value at
-                    poker tables.
+                    Currently engineering at <span className="text-accent-cyan">Pulse Imaging</span>{" "}
+                    and building <span className="text-accent-cyan">Heron</span>,
+                    a platform for event-based refund promotions.
                   </p>
+
+                  <p className="text-sm">
+                    B.S. Computer Science, FinTech minor · Case Western Reserve University
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 }}
+                  className="grid grid-cols-3 gap-3 border-t border-border pt-4 text-sm"
+                >
+                  <div>
+                    <p className="font-mono text-xl text-accent-cyan">93%</p>
+                    <p className="text-text-secondary text-xs">less time computing CT statistics</p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-xl text-accent-cyan">13</p>
+                    <p className="text-text-secondary text-xs">merged open-source contributions</p>
+                  </div>
+                  <div>
+                    <p className="font-mono text-xl text-accent-cyan">50</p>
+                    <p className="text-text-secondary text-xs">concurrent users on Shipped</p>
+                  </div>
                 </motion.div>
 
                 {/* Navigation */}
@@ -59,10 +84,10 @@ export function Hero() {
                   className="pt-6 flex flex-wrap gap-4"
                 >
                   <a
-                    href="#projects"
+                    href="#experience"
                     className="px-4 py-2 border border-border rounded hover:border-accent-cyan hover:text-accent-cyan transition-colors font-mono text-sm"
                   >
-                    [view work]
+                    [view experience]
                   </a>
                   <a
                     href="#contact"
@@ -80,7 +105,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="h-full"
+            className="h-72 md:h-full"
           >
             <div className="relative w-full h-full rounded-lg border border-border bg-surface overflow-hidden">
               <Image
@@ -97,7 +122,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.a
-        href="#projects"
+        href="#experience"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}

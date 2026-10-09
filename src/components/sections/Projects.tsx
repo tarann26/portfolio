@@ -54,9 +54,9 @@ const projects: Project[] = [
   {
     id: "seecare",
     name: "SeeCare",
-    tagline: "Privacy-first memory aid for dementia patients",
+    tagline: "Mobile memory aid for dementia support",
     description:
-      "Mobile app using facial recognition and conversation transcription to reduce anxiety and caregiver burden.",
+      "Combines facial recognition, conversation transcription, and summaries to help users recall people and prior interactions. Best Senior Project, Winter 2025.",
     tech: ["FastAPI", "MongoDB", "AWS", "AssemblyAI", "Expo"],
     visualType: "seecare",
     tier: 1,

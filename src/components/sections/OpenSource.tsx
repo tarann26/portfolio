@@ -107,7 +107,82 @@ const projects: OSSProject[] = [
         url: "https://github.com/Gallopsled/pwntools/pull/2762",
       },
     ],
-  },
+  },{
+  "name": "Poetry",
+  "repo": "python-poetry/poetry",
+  "repoUrl": "https://github.com/python-poetry/poetry",
+  "lang": "Python",
+  "blurb": "Python dependency management and packaging.",
+  "contributions": [
+    {
+      "pr": 11003,
+      "title": "Select the environment-compatible version from duplicate lock entries",
+      "mergedBy": "radoering",
+      "url": "https://github.com/python-poetry/poetry/pull/11003"
+    }
+  ]
+},
+{
+  "name": "JavaParser",
+  "repo": "javaparser/javaparser",
+  "repoUrl": "https://github.com/javaparser/javaparser",
+  "lang": "Java",
+  "blurb": "Java source parsing and code transformation.",
+  "contributions": [
+    {
+      "pr": 5086,
+      "title": "Generate primitive-type keywords independently of system locale",
+      "mergedBy": "jlerbsc",
+      "url": "https://github.com/javaparser/javaparser/pull/5086"
+    }
+  ]
+},
+{
+  "name": "PMD",
+  "repo": "pmd/pmd",
+  "repoUrl": "https://github.com/pmd/pmd",
+  "lang": "Java",
+  "blurb": "Static analysis for Java, Apex, and other languages.",
+  "contributions": [
+    {
+      "pr": 6955,
+      "title": "Report the correct location for an Apex test rule violation",
+      "mergedBy": "UncleOwen",
+      "url": "https://github.com/pmd/pmd/pull/6955"
+    }
+  ]
+},
+{
+  "name": "Dexie.js",
+  "repo": "dexie/Dexie.js",
+  "repoUrl": "https://github.com/dexie/Dexie.js",
+  "lang": "TypeScript",
+  "blurb": "An IndexedDB wrapper for browser applications.",
+  "contributions": [
+    {
+      "pr": 2325,
+      "title": "Handle an index named constructor without crashing",
+      "mergedBy": "dfahlander",
+      "url": "https://github.com/dexie/Dexie.js/pull/2325"
+    }
+  ]
+},
+{
+  "name": "xterm.js",
+  "repo": "xtermjs/xterm.js",
+  "repoUrl": "https://github.com/xtermjs/xterm.js",
+  "lang": "TypeScript",
+  "blurb": "Terminal emulation for browser applications.",
+  "contributions": [
+    {
+      "pr": 6081,
+      "title": "Restore viewport scrolling after clearing scrollback",
+      "mergedBy": "Tyriar",
+      "url": "https://github.com/xtermjs/xterm.js/pull/6081"
+    }
+  ]
+},
+
 ];
 
 const totalMerged = projects.reduce(
@@ -219,9 +294,9 @@ export function OpenSource() {
             </div>
 
             <p className="text-text-secondary text-sm mb-8 leading-relaxed max-w-2xl">
-              Bug fixes accepted into the main development branches of widely
-              used open-source projects &mdash; several merged by project lead
-              maintainers. Each change is small, well-scoped, and ships with
+              Maintainer-reviewed fixes across nine projects, covering Git
+              internals, text processing, dependency management, browser
+              storage, and developer tools. Contributions include targeted
               regression tests.
             </p>
 

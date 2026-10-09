@@ -10,9 +10,20 @@ interface NowItem {
 }
 
 const nowItems: NowItem[] = [
-  { text: "building heron (useheron.io)", highlight: true },
-  { text: "grinding NLH-300 sessions" },
-  { text: "learning guitar (badly)" },
+  {
+    "text": "Engineering at Pulse Imaging: scoring accuracy, performance, and desktop reliability",
+    "highlight": true
+  },
+  {
+    "text": "Building Heron: campaign pricing and merchant discovery",
+    "highlight": true
+  },
+  {
+    "text": "13 merged open-source contributions across nine projects"
+  },
+  {
+    "text": "Outside work: guitar and poker"
+  }
 ];
 
 export function Now() {
@@ -30,7 +41,7 @@ export function Now() {
           <TerminalWindow title="cat ~/.now">
             <div className="space-y-2">
               <p className="text-text-secondary text-sm mb-4">
-                <span className="text-accent-cyan">last updated:</span> aug 2026
+                <span className="text-accent-cyan">last updated:</span> oct 2026
                 <span className="ml-2 inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               </p>
 

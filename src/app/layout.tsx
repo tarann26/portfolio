@@ -16,9 +16,11 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Taranveer Anand | Developer & Founder",
+  metadataBase: new URL("https://www.tarannn.me"),
+  alternates: { canonical: "/" },
+  title: "Taranveer Anand | Software Engineer & Founder",
   description:
-    "CS senior at Case Western Reserve. Building Shipped — an AI job application platform. Previously: SeeCare (Best Senior Project W25), Flyte, Cairn, OrderBook.",
+    "Software engineer and founder working on medical imaging at Pulse Imaging and campaign pricing at Heron. 13 merged open-source contributions across nine projects.",
   keywords: [
     "Taranveer Anand",
     "software developer",
@@ -35,17 +37,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://taranveeranand.com",
+    url: "https://www.tarannn.me",
     siteName: "Taranveer Anand",
-    title: "Taranveer Anand | Developer & Founder",
+    title: "Taranveer Anand | Software Engineer & Founder",
     description:
-      "CS senior at Case Western Reserve. Building Shipped — an AI job application platform.",
+      "Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and contributions to nine open-source projects.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Taranveer Anand | Developer & Founder",
+    title: "Taranveer Anand | Software Engineer & Founder",
     description:
-      "CS senior at Case Western Reserve. Building Shipped — an AI job application platform.",
+      "Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and contributions to nine open-source projects.",
   },
   robots: {
     index: true,

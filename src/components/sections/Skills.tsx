@@ -12,103 +12,109 @@ interface SkillCategory {
 
 const skillCategories: SkillCategory[] = [
   {
-    name: "soft_skills",
-    summary: "how I work",
-    skills: [
-      { name: "product sense", context: "Turning vague ideas into usable shipped products" },
-      { name: "technical communication", context: "Explaining tradeoffs, APIs, and systems clearly" },
-      { name: "problem decomposition", context: "Breaking ambiguous builds into testable pieces" },
-      { name: "rapid prototyping", context: "Shipped, Aionix, HiveMind, portfolio experiments" },
-      { name: "ownership", context: "Founder-led projects from idea to users" },
-      { name: "cross-functional collaboration", context: "Clients, teammates, users, and stakeholders" },
-    ],
+    "name": "languages",
+    "summary": "application and systems programming",
+    "skills": [
+      {
+        "name": "Python",
+        "context": "Pulse Imaging, HiveMind, and SeeCare"
+      },
+      {
+        "name": "TypeScript / JavaScript",
+        "context": "Electron applications, React interfaces, and API tooling"
+      },
+      {
+        "name": "C / C++",
+        "context": "libgit2 contributions and systems projects"
+      },
+      {
+        "name": "Java",
+        "context": "JavaParser and PMD contributions"
+      },
+      {
+        "name": "SQL",
+        "context": "Data migration, reporting, and relational storage"
+      }
+    ]
   },
   {
-    name: "languages",
-    summary: "what I write",
-    skills: [
-      { name: "python", context: "HiveMind, Flyte, SeeCare" },
-      { name: "typescript", context: "Shipped, HiveMind, Invoke" },
-      { name: "javascript", context: "Frontend and Node.js projects" },
-      { name: "java", context: "AI agents, academic projects" },
-      { name: "c/c++", context: "Cairn, systems programming" },
-      { name: "rust", context: "Learning, systems projects" },
-      { name: "sql", context: "PostgreSQL, SQLite, analytics queries" },
-      { name: "bash", context: "CLI workflows, Linux automation" },
-    ],
+    "name": "applications",
+    "summary": "interfaces, APIs, and automation",
+    "skills": [
+      {
+        "name": "React / Next.js",
+        "context": "Web applications and product interfaces"
+      },
+      {
+        "name": "Electron",
+        "context": "Shipped and Pulse Imaging desktop applications"
+      },
+      {
+        "name": "FastAPI",
+        "context": "Python services for imaging and simulation"
+      },
+      {
+        "name": "Browser automation",
+        "context": "Application workflows across ATS platforms"
+      },
+      {
+        "name": "WebSockets / webhooks",
+        "context": "Live updates and external integrations"
+      }
+    ]
   },
   {
-    name: "ai_search_systems",
-    summary: "agentic and retrieval systems",
-    skills: [
-      { name: "llm orchestration", context: "HiveMind, BrainWave, Invoke" },
-      { name: "claude code", context: "Agentic development workflow" },
-      { name: "codex", context: "CLI-assisted implementation and code review" },
-      { name: "prompt engineering", context: "Structured prompts, tool use, and eval loops" },
-      { name: "rag", context: "Retrieval-backed assistants and document reasoning" },
-      { name: "embeddings", context: "Semantic search and entity matching" },
-      { name: "semantic search", context: "Search over docs, profiles, and project data" },
-      { name: "hybrid search", context: "Keyword plus vector retrieval patterns" },
-      { name: "multi-agent systems", context: "HiveMind simulation and agent markets" },
-      { name: "langchain/langgraph", context: "Agent loops and stateful workflows" },
-      { name: "openrouter", context: "LLM routing across model providers" },
-      { name: "pytorch", context: "Flyte distributed training work" },
-      { name: "scikit-learn", context: "ML coursework and data modeling" },
-      { name: "opencv", context: "Computer vision pipelines" },
-    ],
+    "name": "ai_and_data",
+    "summary": "models, agents, and product state",
+    "skills": [
+      {
+        "name": "LLM orchestration",
+        "context": "HiveMind, BrainWave, and Invoke"
+      },
+      {
+        "name": "LangChain / LangGraph",
+        "context": "Agent research and workflow orchestration"
+      },
+      {
+        "name": "PyTorch / NumPy",
+        "context": "ML training and numerical computation"
+      },
+      {
+        "name": "PostgreSQL / MongoDB",
+        "context": "Relational and document storage"
+      },
+      {
+        "name": "Redis",
+        "context": "Queues, caching, and application state"
+      }
+    ]
   },
   {
-    name: "api_platform_engineering",
-    summary: "connecting systems",
-    skills: [
-      { name: "rest api architecture", context: "Product backends and project APIs" },
-      { name: "third-party api integration", context: "ATS, CRM, AI, email, and data services" },
-      { name: "api discovery", context: "Reading docs and wiring unfamiliar systems quickly" },
-      { name: "webhooks", context: "Aionix workflows and event-driven integrations" },
-      { name: "oauth", context: "Auth flows and external account connections" },
-      { name: "websockets", context: "HiveMind and live product updates" },
-      { name: "background jobs", context: "Long-running applies, agents, and automation tasks" },
-      { name: "redis queues", context: "Queued work and realtime state" },
-      { name: "browser automation", context: "Shipped live form filling across ATS systems" },
-      { name: "cli tooling", context: "Developer tools, Invoke, and automation scripts" },
-    ],
-  },
-  {
-    name: "application_data",
-    summary: "product surfaces and state",
-    skills: [
-      { name: "react", context: "Frontend applications and dashboards" },
-      { name: "next.js", context: "Portfolio and HiveMind" },
-      { name: "electron", context: "Shipped desktop app" },
-      { name: "express", context: "Node API services" },
-      { name: "fastify", context: "Typed Node backends" },
-      { name: "fastapi", context: "HiveMind and SeeCare backends" },
-      { name: "flask", context: "BrainWave original backend" },
-      { name: "prisma", context: "Typed database access" },
-      { name: "sqlalchemy", context: "HiveMind market and agent storage" },
-      { name: "postgresql", context: "Relational product data" },
-      { name: "pgvector", context: "Vector search in Postgres" },
-      { name: "supabase", context: "Auth, storage, and Postgres apps" },
-      { name: "mongodb", context: "SeeCare data model" },
-      { name: "redis", context: "Queues, cache, and realtime state" },
-      { name: "chromadb", context: "Vector database experiments" },
-    ],
-  },
-  {
-    name: "infra_tooling",
-    summary: "shipping and operating",
-    skills: [
-      { name: "docker", context: "Local and deployable services" },
-      { name: "aws", context: "S3, Rekognition, and hosted services" },
-      { name: "nginx", context: "Reverse proxy and deployment work" },
-      { name: "github actions", context: "CI/CD and checks" },
-      { name: "linux", context: "Servers and systems coursework" },
-      { name: "n8n", context: "Aionix workflow automation" },
-      { name: "vercel", context: "Frontend deployments" },
-      { name: "tailwind", context: "Fast, consistent UI implementation" },
-      { name: "framer motion", context: "Interactive portfolio animations" },
-    ],
-  },
+    "name": "engineering",
+    "summary": "delivery, correctness, and reliability",
+    "skills": [
+      {
+        "name": "Docker / Linux",
+        "context": "Local services and deployment workflows"
+      },
+      {
+        "name": "AWS / Azure",
+        "context": "Cloud integrations and hosted services"
+      },
+      {
+        "name": "Regression testing / CI",
+        "context": "Scoring correctness, packaged releases, and open-source bug fixes"
+      },
+      {
+        "name": "Performance profiling",
+        "context": "CT statistics reduced from 2,994 ms to 199 ms"
+      },
+      {
+        "name": "API integrations / n8n",
+        "context": "Customer workflows and automation at Aionix"
+      }
+    ]
+  }
 ];
 
 function SkillItem({

@@ -6,17 +6,17 @@ import { SectionHeader } from "../ui/SectionHeader";
 import { ShippedVisual } from "../visuals/ShippedVisual";
 
 const bullets = [
-  "one-click apply across every major ATS",
-  "auto-generates a tailored project per JD",
-  "tracks every application end-to-end",
-  "chrome extension for on-the-fly applies",
+  "role matching and tailored resumes",
+  "portfolio project generation",
+  "application review before submission",
+  "50 concurrent users with live progress tracking"
 ];
 
 export function Shipped() {
   return (
     <section id="shipped" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <SectionHeader title="CURRENTLY BUILDING" />
+        <SectionHeader title="FEATURED PRODUCT" />
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -43,21 +43,21 @@ export function Shipped() {
                     shipped_
                   </h3>
                   <span className="font-mono text-xs text-accent-amber">
-                    {"// mar–may 2026"}
+                    {"// mar 2026–present"}
                   </span>
                 </div>
 
                 <div className="h-px bg-border w-full mb-4" />
 
                 <p className="font-mono text-lg text-accent-cyan mb-4">
-                  Apply to jobs while you sleep.
+                  Job discovery, preparation, and applications in one desktop app.
                 </p>
 
                 <p className="text-text-secondary text-sm mb-6 leading-relaxed">
-                  A desktop app that reads a job posting, generates a tailored
-                  portfolio project for it, and then applies on your behalf
-                  &mdash; across workday, greenhouse, lever, and the rest of
-                  the ATS zoo.
+                  Shipped matches users to roles, prepares tailored resumes
+                  and portfolio projects, and uses browser automation to
+                  submit applications across applicant tracking systems.
+                  Users can review applications before submission.
                 </p>
 
                 <ul className="space-y-2 mb-8">
@@ -84,7 +84,7 @@ export function Shipped() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 font-mono text-sm text-accent-cyan hover:text-accent-amber transition-colors"
                 >
-                  <span>[try shipped →]</span>
+                  <span>[view shipped →]</span>
                   <ExternalLink size={14} />
                 </a>
               </div>

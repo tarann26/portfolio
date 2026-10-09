@@ -16,63 +16,91 @@ interface ExperienceItem {
 
 const experience: ExperienceItem[] = [
   {
-    company: "Heron",
-    role: "Co-Founder, CEO",
-    date: "Jul 2026 - Present",
-    scope: "Underwriting for money-back promotions",
-    link: "https://useheron.io",
-    points: [
-      "Building an underwriting platform for money-back promotions: a merchant refunds every qualifying customer if a public event happens, and Heron prices that trigger against live prediction markets, hedges the exposure, and keeps the spread.",
-      "Wrote the campaign calculator that turns capacity, per-head cap, COGS, and margin into a quote, the merchant's projected net, and the promotion's cost expressed as a flat discount.",
-      "Ran go-to-market end to end: 300 sports bar owners contacted, 20 meetings taken, first verbal commitment for season open, and a 949-account qualified lead list across 23 states.",
+    "company": "Pulse Imaging",
+    "role": "Software Engineer Intern",
+    "date": "Sep 2026 - Present",
+    "scope": "Coronary calcium scoring and medical imaging software",
+    "points": [
+      "Reduced calcium-statistics computation time by 93%, from 2,994 ms to 199 ms on a 512 × 512 × 300 CT volume, by consolidating repeated scans and sharing connected-component analysis.",
+      "Implemented API authentication, request limits, and controlled file imports; resolved backend startup and shutdown defects in packaged desktop releases.",
+      "Corrected Agatston scoring to weight individual lesions by peak density, resolving overestimation caused by a shared artery-level weight."
     ],
-    tags: ["prediction markets", "underwriting", "hedging", "pricing", "go-to-market"],
+    "tags": [
+      "Python",
+      "FastAPI",
+      "React",
+      "TypeScript",
+      "Electron",
+      "Cornerstone3D"
+    ]
   },
   {
-    company: "PulseImaging.AI",
-    role: "Software Engineering Co-Op, part-time",
-    date: "Aug 2026 - Present",
-    scope: "Clinical and medical imaging software",
-    points: [
-      "Building software for AI-driven clinical and medical imaging applications, working with engineers, researchers, and clinical stakeholders.",
-      "Turning functional requirements into shipped features: user interfaces, integrations between application services and databases, plus testing, debugging, and performance work.",
+    "company": "Heron",
+    "role": "Co-Founder & CEO",
+    "date": "Jul 2026 - Present",
+    "scope": "Pricing and risk management for event-based refund promotions",
+    "link": "https://useheron.io",
+    "points": [
+      "Co-founded a platform that lets merchants offer customer refunds when a specified public event occurs, with payout risk priced and hedged through prediction markets.",
+      "Developed a campaign pricing calculator that converts attendance, refund limits, and merchant costs into quotes, projected profit, and comparisons with standard discounts.",
+      "Contacted 300 sports bar owners and held 20 discovery meetings; secured a verbal pilot commitment and built a prospect list of 949 businesses across 23 states."
     ],
-    tags: ["healthcare", "medical imaging", "ai", "interfaces", "databases"],
+    "tags": [
+      "campaign pricing",
+      "prediction markets",
+      "risk management",
+      "customer discovery"
+    ]
   },
   {
-    company: "Shipped.one",
-    role: "Founder, Product Engineer",
-    date: "Mar 2026 - May 2026",
-    scope: "AI desktop job application platform",
-    link: "https://shipped.one",
-    points: [
-      "Built a desktop product that discovers matched roles, tailors resumes, generates portfolio projects, and applies across ATS systems through live browser automation.",
-      "Scaled to 50 concurrent users with application tracking, inbox signal detection, billing controls, and real-time application progress.",
+    "company": "Shipped.one",
+    "role": "Co-Founder & CTO",
+    "date": "Mar 2026 - Present",
+    "scope": "Desktop software for job discovery and application automation",
+    "link": "https://shipped.one",
+    "points": [
+      "Built an Electron desktop application that matches users to roles, tailors resumes, generates portfolio projects, and submits applications across applicant tracking systems through browser automation.",
+      "Designed posting validation and application review workflows; supported 50 concurrent users with application tracking, email monitoring, billing, and live progress updates."
     ],
-    tags: ["electron", "typescript", "postgres", "redis", "browser agents"],
+    "tags": [
+      "Electron",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Redis"
+    ]
   },
   {
-    company: "Aionix.dev",
-    role: "Founder",
-    date: "Jun 2025 - Aug 2025",
-    scope: "AI automation systems for U.S. companies",
-    points: [
-      "Built n8n workflows, custom chatbots, voice AI agents, and CRM integrations to streamline engagement and lead generation.",
-      "Connected webhooks, APIs, CRMs, email, Instagram, and LinkedIn into multi-step outreach and follow-up systems.",
+    "company": "Aionix.dev",
+    "role": "Founder",
+    "date": "Jun 2025 - Aug 2025",
+    "scope": "AI automation and integrations for U.S. companies",
+    "points": [
+      "Built n8n workflows, chatbots, and voice agents for U.S. companies, integrating APIs, CRMs, email, and LinkedIn to automate lead intake, outreach, and follow-up."
     ],
-    tags: ["n8n", "webhooks", "apis", "crm", "voice ai"],
+    "tags": [
+      "n8n",
+      "APIs",
+      "webhooks",
+      "CRM",
+      "voice agents"
+    ]
   },
   {
-    company: "Guru Amardass Private Limited",
-    role: "Database Developer Intern",
-    date: "Sep 2022 - Dec 2022",
-    scope: "ERP data migration and reporting",
-    points: [
-      "Developed Python scripts for data migration and SQL query optimization, reducing processing time by 40%.",
-      "Built data pipelines and dashboards that helped stakeholders debug ERP issues and interpret operational insights.",
+    "company": "Guru Amardass Private Limited",
+    "role": "Database Developer Intern",
+    "date": "Sep 2022 - Dec 2022",
+    "scope": "ERP data migration and reporting",
+    "points": [
+      "Reduced data processing time by 40% through Python migration scripts and SQL query optimization; built data pipelines and dashboards for ERP reporting."
     ],
-    tags: ["python", "sql", "data pipelines", "dashboards"],
-  },
+    "tags": [
+      "Python",
+      "SQL",
+      "data pipelines",
+      "ERP"
+    ]
+  }
 ];
 
 function ExperienceVisual() {

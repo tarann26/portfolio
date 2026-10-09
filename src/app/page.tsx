@@ -6,7 +6,6 @@ import {
   OpenSource,
   Now,
   Skills,
-  Uses,
   Contact,
 } from "@/components/sections";
 
@@ -14,13 +13,12 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Hero />
-      <Shipped />
       <Experience />
-      <Projects />
+      <Shipped />
       <OpenSource />
+      <Projects />
       <Now />
       <Skills />
-      <Uses />
       <Contact />
 
       {/* Footer */}
