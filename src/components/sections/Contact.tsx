@@ -103,16 +103,32 @@ export function Contact() {
               </div>
 
               {/* Resume download */}
-              <motion.a
-                href="/resume.pdf"
-                download
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 mt-4 px-4 py-2 border border-accent-cyan text-accent-cyan rounded hover:bg-accent-cyan/10 transition-colors font-mono text-sm"
-              >
-                <FileDown size={16} />
-                [download resume.pdf]
-              </motion.a>
+              <div className="flex flex-wrap gap-3 pt-4">
+                {[
+                  {
+                    href: "/resume.pdf",
+                    filename: "Taranveer_Anand_Resume_SWE.pdf",
+                    label: "[software engineering resume]",
+                  },
+                  {
+                    href: "/resume-founding-engineer.pdf",
+                    filename: "Taranveer_Anand_Resume_Founding_Engineer.pdf",
+                    label: "[founding engineer resume]",
+                  },
+                ].map((resume) => (
+                  <motion.a
+                    key={resume.href}
+                    href={resume.href}
+                    download={resume.filename}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="inline-flex items-center gap-2 px-4 py-2 border border-accent-cyan text-accent-cyan rounded hover:bg-accent-cyan/10 transition-colors font-mono text-sm"
+                  >
+                    <FileDown size={16} />
+                    {resume.label}
+                  </motion.a>
+                ))}
+              </div>
             </div>
           </TerminalWindow>
         </motion.div>
