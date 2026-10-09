@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "../ui/SectionHeader";
 import { TerminalWindow } from "../ui/TerminalWindow";
+import { mergedPRCount, mergedProjectCount, openPRCount } from "@/data/open-source";
 
 interface NowItem {
   text: string;
@@ -19,7 +20,7 @@ const nowItems: NowItem[] = [
     "highlight": true
   },
   {
-    "text": "13 merged open-source contributions across nine projects"
+    "text": `${mergedPRCount} merged open-source PRs across ${mergedProjectCount} projects; ${openPRCount} additional PRs open`
   },
   {
     "text": "Outside work: guitar and poker"

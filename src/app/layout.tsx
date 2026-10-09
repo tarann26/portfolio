@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { mergedPRCount, mergedProjectCount } from "@/data/open-source";
 import "./globals.css";
 
 const inter = Inter({
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   title: "Taranveer Anand | Software Engineer & Founder",
   description:
-    "Software engineer and founder working on medical imaging at Pulse Imaging and campaign pricing at Heron. 13 merged open-source contributions across nine projects.",
+    `Software engineer and founder working on medical imaging at Pulse Imaging and campaign pricing at Heron. ${mergedPRCount} merged open-source contributions across ${mergedProjectCount} projects.`,
   keywords: [
     "Taranveer Anand",
     "software developer",
@@ -41,13 +42,13 @@ export const metadata: Metadata = {
     siteName: "Taranveer Anand",
     title: "Taranveer Anand | Software Engineer & Founder",
     description:
-      "Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and contributions to nine open-source projects.",
+      `Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and merged contributions to ${mergedProjectCount} open-source projects.`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Taranveer Anand | Software Engineer & Founder",
     description:
-      "Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and contributions to nine open-source projects.",
+      `Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and merged contributions to ${mergedProjectCount} open-source projects.`,
   },
   robots: {
     index: true,

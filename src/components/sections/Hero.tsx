@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { TerminalWindow } from "../ui/TerminalWindow";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
+import { mergedPRCount } from "@/data/open-source";
 
 export function Hero() {
   return (
@@ -67,7 +68,7 @@ export function Hero() {
                     <p className="text-text-secondary text-xs">less time computing CT statistics</p>
                   </div>
                   <div>
-                    <p className="font-mono text-xl text-accent-cyan">13</p>
+                    <p className="font-mono text-xl text-accent-cyan">{mergedPRCount}</p>
                     <p className="text-text-secondary text-xs">merged open-source contributions</p>
                   </div>
                   <div>
