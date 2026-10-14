@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[1133,["/_next/static/chunks/6adc879b7bd0eb1f.js","/_next/static/chunks/9599b218aacf180a.js","/_next/static/chunks/9657ed93fb43ffb6.js"],"ProjectPageClient"]
-3:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+2:I[8686,["488","static/chunks/488-cc6b2ac6958224db.js","774","static/chunks/774-bb561587bb0f3171.js","357","static/chunks/357-973cc288e77d2928.js","419","static/chunks/app/projects/%5Bslug%5D/page-093e464a06923195.js"],"ProjectPageClient"]
+3:I[2455,[],"OutletBoundary"]
 4:"$Sreact.suspense"
-0:{"buildId":"4HXquXmBqrhDOH8tJwt7M","rsc":["$","$1","c",{"children":[["$","$L2",null,{"slug":"crypto-tracker"}],[["$","script","script-0",{"src":"/_next/static/chunks/9599b218aacf180a.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/9657ed93fb43ffb6.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"oEVG6kKa7aE2NvQdyDUWs","rsc":["$","$1","c",{"children":[["$","$L2",null,{"slug":"crypto-tracker"}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"loading":null,"isPartial":false}
 5:null

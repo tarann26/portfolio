@@ -16,7 +16,7 @@ const nowItems: NowItem[] = [
     "highlight": true
   },
   {
-    "text": "Building Heron: campaign pricing and merchant discovery",
+    "text": "Co-founding Heron: event-based refund promotions, campaign pricing, and lead automation",
     "highlight": true
   },
   {
@@ -42,7 +42,7 @@ export function Now() {
           <TerminalWindow title="cat ~/.now">
             <div className="space-y-2">
               <p className="text-text-secondary text-sm mb-4">
-                <span className="text-accent-cyan">last updated:</span> oct 2026
+                <span className="text-accent-cyan">last updated:</span> oct 14, 2026
                 <span className="ml-2 inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               </p>
 

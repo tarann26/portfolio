@@ -23,15 +23,11 @@ export interface ProjectData {
 export const projectsData: Record<string, ProjectData> = {
   hivemind: {
     name: "HiveMind",
-    tagline: "Multi-agent prediction market simulation environment",
-    description:
-      "A real-life simulation environment where AI agents research real-world signals, trade in prediction markets, and expose the reasoning behind their forecasts.",
-    challenge:
-      "Prediction is usually trapped between static reports and single-model guesses. Decision-makers need a way to watch competing assumptions interact, update, and reveal where consensus is actually forming.",
-    solution:
-      "Built a full-stack simulation with role-specialized agents, sealed research phases, Tavily-powered web/news search, OpenRouter models, LMSR market pricing, reasoning logs, weighted consensus, and real-time WebSocket updates.",
-    impact:
-      "Turns uncertain questions into interactive markets where users can inspect evidence, track agent positions, and rehearse what-if scenarios before acting.",
+    tagline: "AI forecasting with autonomous agents and prediction markets",
+    description: "Built a full-stack AI forecasting simulator where role-specialized agents research real-world events, form probability estimates, and trade in prediction markets. An LMSR market maker converts positions into prices, while a live dashboard exposes research, reasoning, trades, and consensus forecasts.",
+    challenge: "Agents need separate research histories and consistent market mechanics to compare competing forecasts. Users also need to inspect the evidence and positions behind a changing consensus.",
+    solution: "Implemented an LMSR pricing and trade-cost engine, concurrent agent loops with histories isolated by agent and market, and LangChain/LangGraph tool use for Tavily web and news research. FastAPI and SQLAlchemy persist market activity, while WebSockets stream reasoning and status updates to a Next.js dashboard.",
+    impact: "Makes multi-agent forecasting observable: users can inspect research, compare positions, track market prices and agent PnL, and follow consensus as trading progresses.",
     tech: [
       "Next.js",
       "TypeScript",
@@ -44,57 +40,56 @@ export const projectsData: Record<string, ProjectData> = {
     github: "https://github.com/Not-Ethan/hivemind/tree/master",
     visualType: "hivemind",
     features: [
-      "Role-specialized agents with independent research strategies",
-      "LMSR prediction market engine with price history",
-      "Sealed research phase before agents can see market prices",
-      "Tavily web/news search filtered by simulated knowledge cutoff",
-      "Live reasoning, trade, and status updates over WebSockets",
-      "Position-weighted consensus and agent PnL tracking",
+      "LMSR pricing and trade-cost calculations with configurable liquidity",
+      "Concurrent, role-specialized LLM agents",
+      "Research and conversation history isolated by agent and market",
+      "Tavily web and news research with knowledge-cutoff filtering",
+      "Live reasoning, trade, and status streams over WebSockets",
+      "Market price history, agent positions, PnL, and consensus forecasts"
     ],
   },
   invoke: {
     name: "Invoke",
-    tagline: "Universal API-to-tool bridge for Claude",
-    description:
-      "An MCP (Model Context Protocol) server that lets Claude access any REST API. When Claude needs data it doesn't have, it automatically researches the API, registers it, and makes the call.",
-    challenge:
-      "Integrating LLMs with external APIs typically requires pre-configuring every API endpoint. This is tedious, doesn't scale, and limits what an AI assistant can do.",
-    solution:
-      "Built a dynamic API discovery system where Claude can research API documentation, construct configurations, and register new APIs on the fly. The system supports multi-key management, request caching, and workflow chaining.",
-    impact:
-      "Enables Claude to access virtually any REST API without pre-configuration, dramatically expanding what AI assistants can accomplish.",
+    tagline: "Dynamic API tools with scoped authorization for AI agents",
+    description: "Built a TypeScript MCP server that exposes dynamically registered REST APIs as tools for AI agents. It combines credential management, request caching, conditional workflows, and an optional authorization layer for controlled API access.",
+    challenge: "Static API integrations require custom tool definitions for each service. Dynamic access also needs controls over which principals can call an API, which operations they can perform, and which requests require approval.",
+    solution: "Implemented dynamic API registration with Zod validation, credential aliases, TTL-based GET caching, conditional workflow chaining, and audit logs. In guarded mode, a shared enforcement point checks grants scoped to principals, APIs, endpoints, methods, and parameters before cache or network access, including expiry, revocation, and approval requirements.",
+    impact: "Lets agents compose reusable API workflows while applying explicit access rules and keeping a record of tool calls and approval decisions.",
     tech: ["TypeScript", "Node.js", "MCP SDK", "Zod"],
     github: "https://github.com/tarann26/invoke",
     visualType: "invoke",
     features: [
-      "Dynamic API discovery and registration",
-      "Multi-key support (dev/prod/project)",
-      "Request caching with configurable TTL",
-      "Workflow engine for chaining API calls",
-      "Health monitoring dashboard",
-      "Full request logging and auditing",
+      "Dynamic REST API registration through MCP tools",
+      "Credential aliases and multi-key management",
+      "TTL-based request caching",
+      "Conditional workflows chaining multiple API calls",
+      "Optional scoped grants with expiry and revocation",
+      "Approval queue and audit logging"
     ],
   },
   seecare: {
     name: "SeeCare",
-    tagline: "Mobile memory aid for dementia support",
-    description:
-      "A mobile memory aid that combines facial recognition, conversation transcription, and summaries to support recall of people and prior interactions.",
-    challenge:
-      "Dementia patients often struggle to recognize familiar faces and remember recent conversations, causing anxiety for both patients and caregivers.",
-    solution:
-      "Built a mobile app with AWS Rekognition and DeepFace for person identification, AssemblyAI for transcription and speaker diarization, and a FastAPI backend for storing and retrieving conversation context.",
-    impact:
-      "Received the Best Senior Project Award (Winter 2025) for a system combining person identification with searchable conversation context.",
-    tech: ["FastAPI", "MongoDB", "AWS S3", "AWS Rekognition", "AssemblyAI", "Expo", "DeepFace"],
+    tagline: "Recognition and conversation recall for dementia support",
+    description: "Developed a mobile memory aid for dementia support that connects person identification with searchable conversation context. Facial recognition, speaker diarization, and conversation summaries help users revisit who they met and what they discussed; wake-word detection, client-side processing, and privacy controls support conversation capture.",
+    challenge: "Remembering familiar people and recent conversations can be difficult for people with dementia. A useful memory aid needs to connect faces with conversation context while giving users control over capture and processing.",
+    solution: "Integrated an Expo mobile experience with facial recognition, AssemblyAI transcription and speaker diarization, and a FastAPI/MongoDB backend for person and conversation context. Implemented wake-word detection, client-side processing, and privacy features around conversation capture.",
+    impact: "Received Case Western Reserve University’s Best Senior Project Award, Winter 2025, for combining person identification with searchable conversation context.",
+    tech: [
+      "Expo",
+      "FastAPI",
+      "MongoDB",
+      "AWS S3",
+      "AWS Rekognition",
+      "AssemblyAI",
+      "DeepFace"
+    ],
     visualType: "seecare",
     features: [
-      "Real-time face detection with DeepFace embeddings",
-      "DBSCAN clustering for unknown face grouping",
-      "Wake-word activated conversation capture",
-      "Speaker diarization via AssemblyAI",
-      "GPT-3.5 conversation summarization",
-      "Searchable person and conversation context",
+      "Wake-word detection for conversation capture",
+      "Client-side processing and privacy controls",
+      "Person identification using facial recognition",
+      "Speaker-diarized conversation transcripts",
+      "Searchable conversation summaries and person context"
     ],
   },
   "crypto-tracker": {
@@ -143,16 +138,12 @@ export const projectsData: Record<string, ProjectData> = {
     ],
   },
   flyte: {
-    name: "Flyte",
-    tagline: "Distributed ML training orchestration for PyTorch on Kubernetes",
-    description:
-      "Flyte wraps the complexity of torch.distributed, NCCL, rank assignment, and fault recovery into a declarative TrainingSpec — letting ML engineers focus on model iteration instead of infrastructure plumbing.",
-    challenge:
-      "Distributed PyTorch jobs at scale involve a surprising amount of undifferentiated infrastructure work: DDP boilerplate, rank assignment, NCCL configuration, fault recovery, and profiling. One misconfigured env var can silently corrupt gradients, and 'training is slow' could mean I/O-, communication-, or compute-bound without instrumentation.",
-    solution:
-      "Built a declarative training orchestrator on Kubernetes + Flyte that automates rank assignment and OOM/NCCL fault recovery with configurable retry. Instrumented training loops via PyTorch hooks to profile data-load, forward/backward, and gradient-sync latencies, classifying workloads as compute-/IO-/comm-bound and exporting Prometheus metrics to Grafana. A/B benchmark comparison uses Welch's t-test; a Redis-backed dataset cache and content-addressable SHA-256 versioning eliminate redundant preprocessing across workers.",
-    impact:
-      "162 unit tests covering the full training lifecycle. Turns 'is my training slow, and why?' from a guessing game into a dashboard.",
+    name: "FlyteTorch",
+    tagline: "PyTorch training orchestration and performance profiling",
+    description: "Built a Python toolkit for declarative PyTorch training configuration, Kubernetes job orchestration, and training-performance analysis. The implementation includes distributed process-group setup, phase-level profiling, Redis dataset caching, and content-addressed dataset versions.",
+    challenge: "Training configuration, worker lifecycle, dataset preparation, and performance instrumentation often live in separate scripts, making experiments difficult to reproduce and compare.",
+    solution: "Implemented TrainingSpec configuration, Kubernetes job manifests and lifecycle helpers, and PyTorch distributed process-group setup. Profiling hooks record training phases; dataset caching uses Redis and SHA-256 versioning, and experiment comparisons apply Welch’s t-test.",
+    impact: "Brings job configuration, profiling, dataset reuse, and benchmark comparison into a common workflow for inspecting training behavior.",
     tech: [
       "Python",
       "PyTorch (DDP/NCCL)",
@@ -164,25 +155,21 @@ export const projectsData: Record<string, ProjectData> = {
     github: "https://github.com/tarann26/flytetorch",
     visualType: "flyte",
     features: [
-      "Declarative TrainingSpec on Kubernetes + Flyte",
-      "Automatic rank assignment and OOM/NCCL fault recovery",
-      "PyTorch-hook profiler classifying compute-/IO-/comm-bound workloads",
-      "Prometheus + Grafana observability",
-      "A/B benchmark comparison with Welch's t-test",
-      "Redis-backed dataset cache with SHA-256 content-addressable versioning",
+      "Declarative TrainingSpec configuration",
+      "Kubernetes job manifests and lifecycle helpers",
+      "Distributed PyTorch process-group setup",
+      "Training-phase profiling and Prometheus metrics",
+      "Benchmark comparison using Welch’s t-test",
+      "Redis dataset caching with SHA-256 versioning"
     ],
   },
   cairn: {
     name: "Cairn",
-    tagline: "High-performance block deduplication engine in C++17",
-    description:
-      "A block deduplication engine using Rabin-fingerprint content-defined chunking and SHA-256 content addressing, with a lock-free sharded chunk index and delta-encoded WAN replication.",
-    challenge:
-      "Fixed-size block deduplication hits ~12% dedup ratio on real workloads and wastes replication bandwidth. Concurrent ingestion at high throughput requires lock-free data structures, which are notoriously easy to get wrong under ASan/TSan.",
-    solution:
-      "Built a C++17 engine using Rabin-fingerprint content-defined chunking and SHA-256 content addressing. The chunk index is lock-free and sharded with atomic refcounting. WAN replication uses bsdiff-style LCS for delta-encoded transfers; GC is priority-aware with reference counting and sub-ms per-chunk reclamation.",
-    impact:
-      "~500 MB/s chunking throughput, 65% dedup ratio (vs. 12% fixed-size), ~1.2 GB/s parallel ingestion across 16 threads, 40–70% replication-bandwidth reduction. Hardened with AddressSanitizer and ThreadSanitizer in CI.",
+    tagline: "Content-addressed storage and deduplication in C++17",
+    description: "Built a C++17 deduplication engine using Rabin-fingerprint content-defined chunking and SHA-256 content addressing. A sharded concurrent index tracks stored chunks, with atomic reference counts, garbage collection, and delta replication.",
+    challenge: "Fixed-size boundaries can miss shared content after insertions or edits. Concurrent storage also needs coordinated index access and a reliable way to reclaim chunks after references are removed.",
+    solution: "Implemented Rabin-fingerprint chunking and SHA-256 chunk identifiers. The index uses sharded reader/writer locks and atomic reference counts; storage operations support deduplication, reference-counted reclamation, and replication of changed content.",
+    impact: "Explores content-addressed storage across chunking, indexing, reclamation, and replication, with benchmark harnesses for inspecting each stage.",
     tech: [
       "C++17",
       "OpenSSL (SHA-256)",
@@ -194,23 +181,19 @@ export const projectsData: Record<string, ProjectData> = {
     features: [
       "Rabin-fingerprint content-defined chunking",
       "SHA-256 content addressing",
-      "Lock-free sharded concurrent chunk index",
-      "Delta-encoded WAN replication (bsdiff-style LCS)",
-      "Priority-aware reference-counted GC",
-      "ASan/TSan hardened in CI",
+      "Sharded concurrent chunk index with reader/writer locks",
+      "Atomic reference counting and garbage collection",
+      "Delta replication of changed content",
+      "Benchmark harnesses for ingestion, deduplication, and replication"
     ],
   },
   orderbook: {
     name: "OrderBook",
     tagline: "Real-time limit order book and matching engine",
-    description:
-      "A real-time limit order book and matching engine implementing price-time priority — the same core algorithm that powers electronic exchange matching and real-time auction ranking.",
-    challenge:
-      "Matching engines need O(log n) price-level inserts and O(1) best-price access while eliminating floating-point drift across millions of orders. FIFO time-priority within a price level must be rigorously correct — subtle bugs here are the kind that cause real financial incidents.",
-    solution:
-      "Backed the book with B-tree-based SortedDict for O(log n) inserts and O(1) best-price access. Decimal arithmetic throughout prevents floating-point drift. Supports limit and market orders, partial fills, and cancels. Built a Textual TUI and an asyncio-driven market simulator with configurable order flow.",
-    impact:
-      "180-test suite covering matching semantics, FIFO time-priority, and market-order sweep. Correct by construction, observable by design.",
+    description: "Built a Python limit-order-book simulator implementing price-time priority matching. The engine supports limit and market orders, partial fills, cancellations, and trade history, with Decimal arithmetic for prices and quantities.",
+    challenge: "Matching needs to preserve FIFO priority at each price, handle partial fills and market-order sweeps, and keep prices and quantities consistent without floating-point drift.",
+    solution: "Organized bid and ask price levels with SortedDict and FIFO queues, using Decimal arithmetic throughout matching. Added a Textual terminal interface and an asyncio-driven market simulator to inspect order flow, fills, and book state.",
+    impact: "Makes matching behavior visible through a live terminal interface, with tests covering order handling and priority rules.",
     tech: [
       "Python 3.11",
       "Textual",
@@ -221,12 +204,12 @@ export const projectsData: Record<string, ProjectData> = {
     github: "https://github.com/tarann26/orderbook",
     visualType: "orderbook",
     features: [
-      "Price-time priority matching",
-      "Limit + market orders, partial fills, cancels",
-      "B-tree backed SortedDict (O(log n) inserts, O(1) best price)",
-      "Decimal arithmetic — no floating-point drift",
-      "Textual TUI for live book visualization",
-      "Asyncio market simulator with configurable order flow",
+      "Price-time priority and FIFO matching within price levels",
+      "Limit and market orders, partial fills, and cancellations",
+      "SortedDict-backed bid and ask price levels",
+      "Decimal-based prices and quantities",
+      "Live Textual terminal interface",
+      "Asynchronous market simulator with configurable order flow"
     ],
   },
 };

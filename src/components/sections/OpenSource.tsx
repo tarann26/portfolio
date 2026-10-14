@@ -140,10 +140,10 @@ export function OpenSource() {
             </div>
 
             <p className="text-text-secondary text-sm mb-6 leading-relaxed max-w-2xl">
-              Maintainer-reviewed fixes covering Git
-              internals, text processing, dependency management, browser
-              storage, and developer tools. Contributions include targeted
-              regression tests.
+              Maintainer-reviewed fixes for Git diff parsing and index conflicts,
+              Unicode tokenization, dependency resolution, and browser storage.
+              Each contribution links to its upstream pull request, with
+              regression tests accompanying the fixes.
             </p>
 
             <div className="flex flex-wrap gap-2 mb-6" aria-label="Filter contributions by pull request status">
@@ -192,7 +192,7 @@ export function OpenSource() {
                 <span>[view {status} upstream PRs on GitHub →]</span>
               </a>
               <span className="font-mono text-xs text-text-secondary">
-                Verified <time dateTime={ossVerifiedAt}>October 9, 2026</time>
+                Verified <time dateTime={ossVerifiedAt}>October 14, 2026</time>
               </span>
             </div>
           </div>

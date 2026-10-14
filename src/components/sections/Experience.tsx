@@ -36,31 +36,32 @@ const experience: ExperienceItem[] = [
   },
   {
     "company": "Heron",
-    "role": "Co-Founder & CEO",
+    "role": "Co-Founder",
     "date": "Jul 2026 - Present",
     "scope": "Pricing and risk management for event-based refund promotions",
     "link": "https://useheron.io",
     "points": [
       "Co-founded a platform that lets merchants offer customer refunds when a specified public event occurs, with payout risk priced and hedged through prediction markets.",
-      "Developed a campaign pricing calculator that converts attendance, refund limits, and merchant costs into quotes, projected profit, and comparisons with standard discounts.",
-      "Contacted 300 sports bar owners and held 20 discovery meetings; secured a verbal pilot commitment and built a prospect list of 949 businesses across 23 states."
+      "Built a campaign-pricing calculator that translates attendance, refund caps, merchant costs, and hedge costs into quotes, margin projections, and equivalent discount rates.",
+      "Built a Python/Node.js lead pipeline covering 1,650+ prospects across 22 states, with website enrichment, deduplication, email outreach, and reply tracking. Outreach achieved approximately a 15% reply rate and 2.2% close rate."
     ],
     "tags": [
+      "Python",
+      "Node.js",
       "campaign pricing",
       "prediction markets",
-      "risk management",
-      "customer discovery"
+      "lead automation"
     ]
   },
   {
     "company": "Shipped.one",
-    "role": "Co-Founder & CTO",
+    "role": "Technical Lead",
     "date": "Mar 2026 - Present",
     "scope": "Desktop software for job discovery and application automation",
     "link": "https://shipped.one",
     "points": [
       "Built an Electron desktop application that matches users to roles, tailors resumes, generates portfolio projects, and submits applications across applicant tracking systems through browser automation.",
-      "Designed posting validation and application review workflows; supported 50 concurrent users with application tracking, email monitoring, billing, and live progress updates."
+      "Implemented posting validation, skill-fit scoring, and application review, alongside billing, email monitoring, and live progress tracking; reached 50 concurrent users within one week."
     ],
     "tags": [
       "Electron",

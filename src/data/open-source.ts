@@ -18,8 +18,8 @@ export interface OSSProject {
 }
 
 // Authored upstream PRs; excludes personal repositories and employment work.
-// Verified against GitHub on October 9, 2026.
-export const ossVerifiedAt = "2026-10-09";
+// Verified against GitHub on October 14, 2026.
+export const ossVerifiedAt = "2026-10-14";
 
 export const ossProjects: OSSProject[] = [
   {

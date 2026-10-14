@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Taran is three credits from a computer science degree at Case Western. A collapsed lender left $29,702 in his way.">
+<title>Three Credits Left</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Archivo:wght@500;600&display=swap">
+<style>
+  :root {
+    --paper: #FAF1E2;
+    --card: #F4E5C9;
+    --ink: #33291C;
+    --faded: #7A6A4F;
+    --saffron: #B85C0A;
+    --saffron-deep: #9C4B03;
+    --btn-text: #FFF9EC;
+    --line: #E6D3AC;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #211A0F;
+      --card: #2C2313;
+      --ink: #F3E9D3;
+      --faded: #B5A483;
+      --saffron: #F0A03C;
+      --saffron-deep: #F7B45C;
+      --btn-text: #221600;
+      --line: #423722;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #211A0F;
+    --card: #2C2313;
+    --ink: #F3E9D3;
+    --faded: #B5A483;
+    --saffron: #F0A03C;
+    --saffron-deep: #F7B45C;
+    --btn-text: #221600;
+    --line: #423722;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Newsreader", Georgia, "Times New Roman", serif;
+    font-size: 17.5px;
+    line-height: 1.55;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    border-top: 4px solid var(--saffron);
+  }
+  .page {
+    width: 100%;
+    max-width: 960px;
+    padding: 36px 22px 26px;
+  }
+  .eyebrow {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin: 0 0 14px;
+  }
+  h1 {
+    font-family: "Young Serif", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(29px, 5.2vw, 44px);
+    line-height: 1.13;
+    margin: 0 0 22px;
+    text-wrap: balance;
+  }
+  .cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  @media (min-width: 800px) {
+    .page { padding: 52px 32px 30px; }
+    .cols { grid-template-columns: 1.15fr 0.85fr; gap: 54px; align-items: start; }
+  }
+  .story p { margin: 0 0 15px; max-width: 34em; }
+  .story .signoff { font-style: italic; color: var(--faded); margin-top: 20px; }
+  .story .signoff .name {
+    font-family: "Young Serif", Georgia, serif;
+    font-style: normal;
+    color: var(--ink);
+  }
+  /* PHOTO SLOT: insert <img class="me" src="me.jpg" alt="Taran"> above .eyebrow
+     and uncomment:
+  .me { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 16px; border: 2px solid var(--line); }
+  */
+
+  .side {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 22px 20px 20px;
+  }
+  .ledger { margin: 0 0 18px; }
+  .row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 7px 0;
+    font-size: 15.5px;
+  }
+  .row .k { color: var(--faded); white-space: nowrap; }
+  .row .dots {
+    flex: 1;
+    border-bottom: 2px dotted var(--line);
+    transform: translateY(-4px);
+    min-width: 16px;
+  }
+  .row .v {
+    font-family: "Young Serif", Georgia, serif;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .row .v.owe { color: var(--saffron); }
+
+  .progress-label {
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--faded);
+    margin: 0 0 7px;
+  }
+  .bar {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--line);
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    background: var(--saffron);
+    transition: width 1.4s ease-out;
+  }
+  @media (prefers-reduced-motion: reduce) { .bar i { transition: none; } }
+
+  .donate {
+    display: block;
+    text-align: center;
+    background: var(--saffron);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-family: "Archivo", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 18px;
+    border-radius: 9px;
+    margin-bottom: 10px;
+  }
+  .donate:hover, .donate:focus-visible { background: var(--saffron-deep); }
+  .share {
+    display: block;
+    width: 100%;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 11px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+  }
+  .share:hover, .share:focus-visible { border-color: var(--faded); }
+  .donate:focus-visible, .share:focus-visible { outline: 2px solid var(--saffron); outline-offset: 2px; }
+  .goes {
+    margin: 12px 0 0;
+    font-size: 13.5px;
+    color: var(--faded);
+    text-align: center;
+  }
+
+  .receipts {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+  .receipts .progress-label { margin-bottom: 10px; }
+  .shots { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .shot {
+    display: block;
+    text-decoration: none;
+    color: var(--faded);
+    font-family: "Archivo", system-ui, sans-serif;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: 92px;
+    object-fit: cover;
+    object-position: left top;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background: #fff;
+    margin-bottom: 6px;
+  }
+  .shot:hover img, .shot:focus-visible img { border-color: var(--saffron); }
+  .shot .cap b { color: var(--ink); font-weight: 600; }
+
+  footer {
+    margin-top: 34px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 22px;
+    font-size: 14px;
+    color: var(--faded);
+  }
+  footer a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { border-bottom-color: var(--saffron); }
+</style>
+</head>
+<body>
+<div class="page">
+  <main class="cols">
+    <div class="story">
+      <p class="eyebrow">Taran &middot; Case Western Reserve University</p>
+      <h1>I&rsquo;m three credits from a computer science degree.</h1>
+      <p>My name is Taran. I came to Cleveland from India four years ago, and I&rsquo;ve finished 123 of the 126 credits I need, with a 3.83 GPA in my major. One class stands between me and graduating this December.</p>
+      <p>The lender financing my education collapsed, and that left $29,702 on my account. My family paid $7,500 this year. Until the rest clears, the university has frozen my registration: I can&rsquo;t take my final class, and the job waiting for me at a medical AI startup stays on hold.</p>
+      <p>I&rsquo;ve spent the past month asking every office on campus, in writing, up to the provost. A startup accelerator interviewed me this month and asked me to apply again after I graduate. I plan to. I just have to finish first.</p>
+      <p>Anything you give goes to the balance. If you can&rsquo;t give, sharing this page helps more than you&rsquo;d think.</p>
+      <p class="signoff">Thank you for reading this far. It means something to me that you did.<br><span class="name">&mdash; Taran</span></p>
+    </div>
+
+    <aside class="side">
+      <div class="ledger">
+        <div class="row"><span class="k">Credits finished</span><span class="dots"></span><span class="v">123 of 126</span></div>
+        <div class="row"><span class="k">Major GPA</span><span class="dots"></span><span class="v">3.83</span></div>
+        <div class="row"><span class="k">Paid this year</span><span class="dots"></span><span class="v">$7,500</span></div>
+        <div class="row"><span class="k">Still owed</span><span class="dots"></span><span class="v owe">$29,702</span></div>
+        <div class="row"><span class="k">Graduation</span><span class="dots"></span><span class="v">Dec 2026</span></div>
+      </div>
+      <p class="progress-label">97% of the way there</p>
+      <div class="bar"><i id="fill"></i></div>
+      <a class="donate" href="https://gofund.me/357935992" target="_blank" rel="noopener">Help me finish &rarr;</a>
+      <button class="share" id="shareBtn" type="button">Share this page</button>
+      <p class="goes">Every dollar goes to the university balance, through GoFundMe.</p>
+
+      <div class="receipts">
+        <p class="progress-label">Straight from my student account</p>
+        <div class="shots">
+          <a class="shot" href="/help/charges.png" target="_blank" rel="noopener">
+            <img src="/help/charges.png" alt="SIS Detail of Charges Due, total $29,702.05" loading="lazy">
+            <span class="cap"><b>The bill.</b> Detail of charges, $29,702.05 total. Tap to view.</span>
+          </a>
+          <a class="shot" href="/help/graduation.png" target="_blank" rel="noopener">
+            <img src="/help/graduation.png" alt="SIS Expected Graduation Term: Fall 2026, Active in Program" loading="lazy">
+            <span class="cap"><b>The finish line.</b> Expected graduation Fall 2026, active in program. Tap to view.</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <a href="mailto:tsa43@case.edu">tsa43@case.edu</a>
+    <a href="https://x.com/taranveer26" target="_blank" rel="noopener">@taranveer26 on X</a>
+    <a href="https://www.instagram.com/tarann.26" target="_blank" rel="noopener">@tarann.26 on Instagram</a>
+  </footer>
+</div>
+
+<script>
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      document.getElementById("fill").style.width = "97.6%";
+    });
+  });
+
+  var btn = document.getElementById("shareBtn");
+  btn.addEventListener("click", function () {
+    var data = {
+      title: "Three Credits Left",
+      text: "Taran is 3 credits from a CS degree. A collapsed lender left $29,702 in his way.",
+      url: location.href
+    };
+    if (navigator.share) {
+      navigator.share(data).catch(function () {});
+    } else {
+      navigator.clipboard.writeText(location.href).then(function () {
+        btn.textContent = "Link copied";
+        setTimeout(function () { btn.textContent = "Share this page"; }, 2000);
+      }).catch(function () {});
+    }
+  });
+</script>
+</body>
+</html>

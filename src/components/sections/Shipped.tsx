@@ -6,10 +6,10 @@ import { SectionHeader } from "../ui/SectionHeader";
 import { ShippedVisual } from "../visuals/ShippedVisual";
 
 const bullets = [
-  "role matching and tailored resumes",
+  "validated role matching and tailored resumes",
   "portfolio project generation",
   "application review before submission",
-  "50 concurrent users with live progress tracking"
+  "50 concurrent users within one week"
 ];
 
 export function Shipped() {

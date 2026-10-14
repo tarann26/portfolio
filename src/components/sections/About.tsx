@@ -31,9 +31,9 @@ export function About() {
 
                 <div className="pt-4 border-t border-border mt-6">
                   <p className="font-mono text-sm">
-                    <span className="text-text-secondary">Previously:</span>{" "}
+                    <span className="text-text-secondary">Also built:</span>{" "}
                     <span className="text-accent-cyan">Shipped.one</span>{" "}
-                    <span className="text-text-secondary">(co-founder)</span>,{" "}
+                    <span className="text-text-secondary">(technical lead)</span>,{" "}
                     <span className="text-accent-cyan">Aionix.dev</span>{" "}
                     <span className="text-text-secondary">(founder)</span>,{" "}
                     <span className="text-accent-cyan">Guru Amardass</span>{" "}

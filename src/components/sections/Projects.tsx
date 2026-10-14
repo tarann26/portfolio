@@ -32,20 +32,18 @@ const projects: Project[] = [
   {
     id: "hivemind",
     name: "HiveMind",
-    tagline: "Multi-agent prediction market simulation environment",
-    description:
-      "Simulates agent swarms that research real-world signals, trade against LMSR markets, and surface consensus forecasts through a live dashboard.",
-    tech: ["Next.js", "FastAPI", "LangChain", "OpenRouter", "WebSockets"],
+    tagline: "AI forecasting with autonomous agents and prediction markets",
+    description: "Concurrent, role-specialized agents research news and trade against an LMSR market maker. A live WebSocket dashboard streams their reasoning, trades, and consensus forecasts.",
+    tech: ["Next.js", "FastAPI", "LangChain/LangGraph", "OpenRouter", "WebSockets"],
     github: "https://github.com/Not-Ethan/hivemind/tree/master",
     visualType: "hivemind",
     tier: 1,
   },
   {
     id: "flyte",
-    name: "Flyte",
-    tagline: "Distributed ML training orchestration for PyTorch on Kubernetes",
-    description:
-      "Wraps torch.distributed, NCCL, and Kubernetes scheduling behind a declarative TrainingSpec with automatic fault recovery and built-in profiling.",
+    name: "FlyteTorch",
+    tagline: "PyTorch training orchestration and performance profiling",
+    description: "Declarative training specifications, Kubernetes job manifests, distributed process-group setup, phase-level profiling, dataset caching, and statistical benchmark comparisons.",
     tech: ["Python", "PyTorch", "Kubernetes", "Flyte", "Prometheus"],
     github: "https://github.com/tarann26/flytetorch",
     visualType: "flyte",
@@ -54,10 +52,9 @@ const projects: Project[] = [
   {
     id: "seecare",
     name: "SeeCare",
-    tagline: "Mobile memory aid for dementia support",
-    description:
-      "Combines facial recognition, conversation transcription, and summaries to help users recall people and prior interactions. Best Senior Project, Winter 2025.",
-    tech: ["FastAPI", "MongoDB", "AWS", "AssemblyAI", "Expo"],
+    tagline: "Recognition and conversation recall for dementia support",
+    description: "A mobile memory aid combining facial recognition, speaker diarization, and searchable summaries, with wake-word detection, client-side processing, and privacy controls.",
+    tech: ["Expo", "FastAPI", "MongoDB", "AWS", "AssemblyAI"],
     visualType: "seecare",
     tier: 1,
     award: "Best Senior Project W25",
@@ -65,9 +62,8 @@ const projects: Project[] = [
   {
     id: "cairn",
     name: "Cairn",
-    tagline: "High-performance block deduplication engine in C++17",
-    description:
-      "Rabin-fingerprint content-defined chunking, SHA-256 content addressing, lock-free sharded index. ~500 MB/s chunking, 65% dedup ratio.",
+    tagline: "Content-addressed storage and deduplication in C++17",
+    description: "Rabin-fingerprint chunking, SHA-256 content addressing, a sharded concurrent index, reference-counted garbage collection, and delta replication.",
     tech: ["C++17", "OpenSSL", "CMake", "ASan/TSan"],
     visualType: "cairn",
     tier: 2,
@@ -76,8 +72,7 @@ const projects: Project[] = [
     id: "orderbook",
     name: "OrderBook",
     tagline: "Real-time limit order book and matching engine",
-    description:
-      "Price-time priority matching, B-tree backed price levels, Decimal arithmetic throughout. 180-test suite.",
+    description: "Price-time priority matching with limit and market orders, partial fills, cancellations, and Decimal arithmetic. Includes a live Textual interface and asynchronous market simulator.",
     tech: ["Python 3.11", "Textual", "sortedcontainers", "asyncio"],
     github: "https://github.com/tarann26/orderbook",
     visualType: "orderbook",
@@ -86,9 +81,8 @@ const projects: Project[] = [
   {
     id: "invoke",
     name: "Invoke",
-    tagline: "Universal API-to-tool bridge for Claude",
-    description:
-      "MCP server that lets Claude dynamically discover, research, and register APIs. Ask for data, Claude handles the rest.",
+    tagline: "Dynamic API tools with scoped authorization for AI agents",
+    description: "A TypeScript MCP server with dynamic API registration, conditional workflows, caching, and an optional authorization layer enforcing scoped grants and approval requirements.",
     tech: ["TypeScript", "Node.js", "MCP SDK"],
     github: "https://github.com/tarann26/invoke",
     visualType: "invoke",
@@ -139,7 +133,7 @@ function ProjectCard({ project }: { project: Project }) {
           {project.tagline}
         </p>
 
-        <p className="text-text-secondary text-sm mb-4 line-clamp-2">
+        <p className="text-text-secondary text-sm mb-4 leading-relaxed">
           {project.description}
         </p>
 

@@ -73,7 +73,7 @@ export function Hero() {
                   </div>
                   <div>
                     <p className="font-mono text-xl text-accent-cyan">50</p>
-                    <p className="text-text-secondary text-xs">concurrent users on Shipped</p>
+                    <p className="text-text-secondary text-xs">concurrent Shipped users within one week</p>
                   </div>
                 </motion.div>
 
