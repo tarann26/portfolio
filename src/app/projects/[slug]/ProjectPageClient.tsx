@@ -49,6 +49,9 @@ export function ProjectPageClient({ slug }: { slug: string }) {
         >
           <h1 className="text-4xl font-mono font-bold mb-2">{project.name}</h1>
           <p className="text-xl text-accent-cyan font-mono">{project.tagline}</p>
+          {project.date && (
+            <p className="mt-3 text-sm text-text-secondary font-mono">{project.date}</p>
+          )}
         </motion.div>
 
         {/* Visual */}
@@ -169,7 +172,7 @@ export function ProjectPageClient({ slug }: { slug: string }) {
               className="inline-flex items-center gap-2 px-4 py-2 bg-accent-cyan text-background rounded hover:bg-accent-cyan/90 transition-colors font-mono text-sm"
             >
               <ExternalLink size={16} />
-              Live Demo
+              Visit website
             </a>
           )}
         </motion.div>

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   title: "Taranveer Anand | Software Engineer & Founder",
   description:
-    `Software engineer and founder working on medical imaging at Pulse Imaging and campaign pricing at Heron. ${mergedPRCount} merged open-source contributions across ${mergedProjectCount} projects.`,
+    `Software engineer and founder building Attune, Poker Bot, and financial technology at Heron, with medical imaging experience at Pulse Imaging. ${mergedPRCount} merged open-source contributions across ${mergedProjectCount} projects.`,
   keywords: [
     "Taranveer Anand",
     "software developer",
@@ -30,6 +30,9 @@ export const metadata: Metadata = {
     "distributed systems",
     "C++",
     "Shipped",
+    "Attune",
+    "Heron",
+    "Poker Bot",
     "Case Western Reserve",
     "portfolio",
   ],
@@ -42,13 +45,13 @@ export const metadata: Metadata = {
     siteName: "Taranveer Anand",
     title: "Taranveer Anand | Software Engineer & Founder",
     description:
-      `Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and merged contributions to ${mergedProjectCount} open-source projects.`,
+      `Software engineer and founder. Attune, Poker Bot, campaign pricing at Heron, medical imaging at Pulse Imaging, and merged contributions to ${mergedProjectCount} open-source projects.`,
   },
   twitter: {
     card: "summary_large_image",
     title: "Taranveer Anand | Software Engineer & Founder",
     description:
-      `Software engineer and founder. Medical imaging at Pulse Imaging, campaign pricing at Heron, and merged contributions to ${mergedProjectCount} open-source projects.`,
+      `Software engineer and founder. Attune, Poker Bot, campaign pricing at Heron, medical imaging at Pulse Imaging, and merged contributions to ${mergedProjectCount} open-source projects.`,
   },
   robots: {
     index: true,

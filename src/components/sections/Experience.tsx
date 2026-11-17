@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { SectionHeader } from "../ui/SectionHeader";
+import { timeline } from "@/data/timeline";
 
 interface ExperienceItem {
   company: string;
@@ -18,7 +19,7 @@ const experience: ExperienceItem[] = [
   {
     "company": "Pulse Imaging",
     "role": "Software Engineer Intern",
-    "date": "Sep 2026 - Present",
+    "date": timeline.pulse,
     "scope": "Coronary calcium scoring and medical imaging software",
     "points": [
       "Reduced calcium-statistics computation time by 93%, from 2,994 ms to 199 ms on a 512 × 512 × 300 CT volume, by consolidating repeated scans and sharing connected-component analysis.",
@@ -37,7 +38,7 @@ const experience: ExperienceItem[] = [
   {
     "company": "Heron",
     "role": "Co-Founder",
-    "date": "Jul 2026 - Present",
+    "date": timeline.heron,
     "scope": "Pricing and risk management for event-based refund promotions",
     "link": "https://useheron.io",
     "points": [
@@ -56,7 +57,7 @@ const experience: ExperienceItem[] = [
   {
     "company": "Shipped.one",
     "role": "Technical Lead",
-    "date": "Mar 2026 - Present",
+    "date": timeline.shipped,
     "scope": "Desktop software for job discovery and application automation",
     "link": "https://shipped.one",
     "points": [
@@ -309,7 +310,7 @@ function ExperienceCard({
 
       <div className="flex flex-wrap items-start justify-between gap-3 mb-2">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             {item.link ? (
               <a
                 href={item.link}

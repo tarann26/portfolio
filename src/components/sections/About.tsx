@@ -16,9 +16,9 @@ export function About() {
             <TerminalWindow title="cat about.txt">
               <div className="space-y-4 text-text-secondary">
                 <p>
-                  CS grad from{" "}
+                  Studying computer science with a FinTech minor at{" "}
                   <span className="text-accent-cyan">Case Western Reserve</span>{" "}
-                  (May 2026) with a habit of mass-producing side projects.
+                  (Jan 2023 - Dec 2026, expected), with a habit of mass-producing side projects.
                 </p>
 
                 <p>

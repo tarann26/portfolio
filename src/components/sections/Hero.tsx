@@ -47,13 +47,14 @@ export function Hero() {
                   </p>
 
                   <p>
-                    Currently engineering at <span className="text-accent-cyan">Pulse Imaging</span>{" "}
-                    and building <span className="text-accent-cyan">Heron</span>,
-                    a platform for event-based refund promotions.
+                    Recent work includes medical imaging at <span className="text-accent-cyan">Pulse Imaging</span>,{" "}
+                    campaign pricing at <span className="text-accent-cyan">Heron</span>,{" "}
+                    software implementation with <span className="text-accent-cyan">Attune</span>,{" "}
+                    and a multi-platform <span className="text-accent-cyan">Poker Bot</span>.
                   </p>
 
                   <p className="text-sm">
-                    B.S. Computer Science, FinTech minor · Case Western Reserve University
+                    B.S. Computer Science, FinTech minor · Case Western Reserve University · Expected Dec 2026
                   </p>
                 </motion.div>
 
@@ -89,6 +90,13 @@ export function Hero() {
                     className="px-4 py-2 border border-border rounded hover:border-accent-cyan hover:text-accent-cyan transition-colors font-mono text-sm"
                   >
                     [view experience]
+                  </a>
+                  <a
+                    href="/resume/Taranveer_Anand_Resume_SWE.pdf"
+                    download="Taranveer_Anand_Resume_SWE.pdf"
+                    className="px-4 py-2 border border-accent-cyan text-accent-cyan rounded hover:bg-accent-cyan/10 transition-colors font-mono text-sm"
+                  >
+                    [download SWE resume]
                   </a>
                   <a
                     href="#contact"

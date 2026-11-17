@@ -106,7 +106,7 @@ export function Contact() {
               <div className="flex flex-wrap gap-3 pt-4">
                 {[
                   {
-                    href: "/resume.pdf",
+                    href: "/resume/Taranveer_Anand_Resume_SWE.pdf",
                     filename: "Taranveer_Anand_Resume_SWE.pdf",
                     label: "[software engineering resume]",
                   },

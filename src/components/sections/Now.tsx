@@ -12,11 +12,15 @@ interface NowItem {
 
 const nowItems: NowItem[] = [
   {
+    text: "Improving Poker Bot: real-time strategy, game-state correctness, and compute performance",
+    highlight: true,
+  },
+  {
     "text": "Engineering at Pulse Imaging: scoring accuracy, performance, and desktop reliability",
     "highlight": true
   },
   {
-    "text": "Co-founding Heron: event-based refund promotions, campaign pricing, and lead automation",
+    "text": "Building Attune: source-backed discovery, reviewed implementation, and durable execution",
     "highlight": true
   },
   {
@@ -42,7 +46,7 @@ export function Now() {
           <TerminalWindow title="cat ~/.now">
             <div className="space-y-2">
               <p className="text-text-secondary text-sm mb-4">
-                <span className="text-accent-cyan">last updated:</span> oct 14, 2026
+                <span className="text-accent-cyan">last updated:</span> nov 17, 2026
                 <span className="ml-2 inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               </p>
 

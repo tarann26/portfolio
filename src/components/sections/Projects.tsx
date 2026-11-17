@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { timeline } from "@/data/timeline";
 import { SectionHeader } from "../ui/SectionHeader";
 import { ProjectVisual } from "../visuals/ProjectVisual";
 import { ExternalLink, Github } from "lucide-react";
@@ -23,14 +24,71 @@ interface Project {
     | "brainwave"
     | "flyte"
     | "cairn"
-    | "orderbook";
+    | "orderbook"
+    | "heron"
+    | "attune"
+    | "poker";
   tier: 1 | 2;
+  date?: string;
   award?: string;
 }
 
 const projects: Project[] = [
   {
+    "id": "attune",
+    "name": "Attune",
+    "tagline": "AI-assisted software implementation for enterprise vendors",
+    "tech": [
+        "React",
+        "TypeScript",
+        "Django/Ninja",
+        "FastAPI",
+        "PostgreSQL",
+        "Temporal",
+        "Docker"
+    ],
+    "visualType": "attune",
+    "description": "A platform for vendor onboarding, customer discovery, and reviewed implementation. Connects source-backed briefs, agent-assisted changes, independent checks, and release recovery.",
+    "tier": 1,
+    "live": "https://getattune.si",
+    "date": timeline.attune
+  },
+  {
+    "id": "heron",
+    "name": "Heron",
+    "tagline": "Pricing and hedging for money-back promotions",
+    "tech": [
+        "Python",
+        "Node.js",
+        "Prediction markets",
+        "Campaign pricing",
+        "Lead automation"
+    ],
+    "visualType": "heron",
+    "description": "Co-founded an underwriter for event-triggered refunds. Built campaign pricing against prediction-market odds and a Python/Node.js outreach pipeline covering 1,650+ prospects across 22 states.",
+    "tier": 1,
+    "live": "https://useheron.io",
+    "date": timeline.heron
+  },
+  {
+    "id": "poker",
+    "name": "Poker Bot",
+    "tagline": "Real-time strategy, game-state tracking, and analysis",
+    "tech": [
+        "TypeScript",
+        "Python",
+        "React",
+        "Swift",
+        "SQLite"
+    ],
+    "visualType": "poker",
+    "description": "Co-built a TypeScript/Python system with a SQLite event hub, React dashboard, Swift iOS app, and four platform adapters. Cut median postflop compute from 401 ms to 48 ms with identical strategy output.",
+    "tier": 1,
+    "date": timeline.poker
+  },
+  {
     id: "hivemind",
+    date: "Jan 2026",
     name: "HiveMind",
     tagline: "AI forecasting with autonomous agents and prediction markets",
     description: "Concurrent, role-specialized agents research news and trade against an LMSR market maker. A live WebSocket dashboard streams their reasoning, trades, and consensus forecasts.",
@@ -51,6 +109,7 @@ const projects: Project[] = [
   },
   {
     id: "seecare",
+    date: "Sep 2025 - Dec 2025",
     name: "SeeCare",
     tagline: "Recognition and conversation recall for dementia support",
     description: "A mobile memory aid combining facial recognition, speaker diarization, and searchable summaries, with wake-word detection, client-side processing, and privacy controls.",
@@ -92,11 +151,6 @@ const projects: Project[] = [
 
 function ProjectCard({ project }: { project: Project }) {
   const [isHovered, setIsHovered] = useState(false);
-  const router = useRouter();
-
-  const handleCardClick = () => {
-    router.push(`/projects/${project.id}`);
-  };
 
   return (
     <motion.article
@@ -106,8 +160,7 @@ function ProjectCard({ project }: { project: Project }) {
       transition={{ duration: 0.5 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={handleCardClick}
-      className={`group relative border border-border rounded-lg bg-surface overflow-hidden transition-all duration-300 cursor-pointer ${
+      className={`group relative border border-border rounded-lg bg-surface overflow-hidden transition-all duration-300 focus-within:border-accent-cyan ${
         isHovered ? "border-accent-cyan glow-cyan-subtle -translate-y-1" : ""
       }`}
     >
@@ -120,7 +173,12 @@ function ProjectCard({ project }: { project: Project }) {
       <div className="p-6">
         <div className="flex items-start justify-between mb-2">
           <h3 className="font-mono text-xl font-semibold text-text-primary group-hover:text-accent-cyan transition-colors">
-            {project.name}
+            <Link
+              href={`/projects/${project.id}`}
+              className="after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-cyan"
+            >
+              {project.name}
+            </Link>
           </h3>
           {project.award && (
             <span className="text-xs font-mono px-2 py-1 bg-accent-amber/20 text-accent-amber rounded">
@@ -128,6 +186,10 @@ function ProjectCard({ project }: { project: Project }) {
             </span>
           )}
         </div>
+
+        {project.date && (
+          <p className="font-mono text-xs text-text-secondary mb-3">{project.date}</p>
+        )}
 
         <p className="font-mono text-sm text-accent-cyan mb-3">
           {project.tagline}
@@ -157,7 +219,7 @@ function ProjectCard({ project }: { project: Project }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1 text-text-secondary hover:text-accent-cyan transition-colors text-sm"
+              className="relative z-10 flex items-center gap-1 text-text-secondary hover:text-accent-cyan transition-colors text-sm"
             >
               <Github size={16} />
               <span>Code</span>
@@ -169,7 +231,7 @@ function ProjectCard({ project }: { project: Project }) {
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1 text-text-secondary hover:text-accent-cyan transition-colors text-sm"
+              className="relative z-10 flex items-center gap-1 text-text-secondary hover:text-accent-cyan transition-colors text-sm"
             >
               <ExternalLink size={16} />
               <span>Live</span>

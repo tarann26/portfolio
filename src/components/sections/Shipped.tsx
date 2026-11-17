@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { SectionHeader } from "../ui/SectionHeader";
 import { ShippedVisual } from "../visuals/ShippedVisual";
+import { timeline } from "@/data/timeline";
 
 const bullets = [
   "validated role matching and tailored resumes",
@@ -38,12 +39,12 @@ export function Shipped() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               {/* Copy column */}
               <div>
-                <div className="flex items-baseline gap-3 mb-4">
+                <div className="flex flex-wrap items-baseline gap-3 mb-4">
                   <h3 className="font-mono text-3xl font-semibold text-text-primary">
                     shipped_
                   </h3>
                   <span className="font-mono text-xs text-accent-amber">
-                    {"// mar 2026–present"}
+                    {timeline.shipped}
                   </span>
                 </div>
 

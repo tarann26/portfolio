@@ -1,3 +1,5 @@
+import { timeline } from "@/data/timeline";
+
 export interface ProjectData {
   name: string;
   tagline: string;
@@ -16,12 +18,96 @@ export interface ProjectData {
     | "brainwave"
     | "flyte"
     | "cairn"
-    | "orderbook";
+    | "orderbook"
+    | "heron"
+    | "attune"
+    | "poker";
+  date?: string;
   features: string[];
 }
 
 export const projectsData: Record<string, ProjectData> = {
+  attune: {
+    "name": "Attune",
+    "tagline": "AI-assisted software implementation for enterprise vendors",
+    "description": "Building an AI-assisted implementation platform for enterprise software vendors and their customers. The working application connects vendor onboarding, source-backed discovery, shared implementation briefs, reviewed agent changes, and independently checked releases. The complete deployment and maintenance lifecycle remains in development.",
+    "challenge": "Enterprise software implementations require product knowledge, customer context, clear ownership, and technical work across multiple systems. Each change needs a traceable scope and a reliable path through review, verification, and recovery.",
+    "solution": "Built a React and TypeScript workspace backed by Django/Ninja business APIs, FastAPI execution services, PostgreSQL, and durable Temporal workers. Connected source-backed briefs and reviewed change packages to private Git staging, independent Docker checks, release records, and recovery workflows.",
+    "impact": "Established a working local implementation flow with persistent review and execution records. Onboarding, discovery, change staging, and recovery have local verification evidence; the full product lifecycle is still in development.",
+    "tech": [
+        "React",
+        "TypeScript",
+        "Django/Ninja",
+        "FastAPI",
+        "PostgreSQL",
+        "Temporal",
+        "Docker"
+    ],
+    "live": "https://getattune.si",
+    "visualType": "attune",
+    "features": [
+        "Vendor onboarding with source-backed product understanding",
+        "Shared customer discovery and implementation briefs",
+        "Reviewed agent changes with private Git staging",
+        "Durable execution with Temporal workers",
+        "Independent Docker verification and release records",
+        "Recovery workflows and customer acceptance records"
+    ],
+    "date": timeline.attune
+  },
+  heron: {
+    "name": "Heron",
+    "tagline": "Pricing and hedging for money-back promotions",
+    "description": "Co-founded a platform that lets merchants offer customer refunds when a specified public event occurs. Heron prices the refund exposure against live prediction-market odds, models campaign economics, and hedges the potential payout.",
+    "challenge": "A merchant needs to understand the cost of an event-triggered refund before launching a promotion. Quotes must account for customer participation, refund caps, merchant costs, and the cost of hedging the event.",
+    "solution": "Built a campaign-pricing calculator that turns attendance, refund caps, merchant costs, and hedge costs into quotes, margin projections, and equivalent discount rates. Added a Python/Node.js lead pipeline with website enrichment, deduplication, outreach, and reply tracking.",
+    "impact": "The lead pipeline covered 1,650+ prospects across 22 states. Outreach achieved approximately a 15% reply rate and a 2.2% close rate.",
+    "tech": [
+        "Python",
+        "Node.js",
+        "Prediction markets",
+        "Campaign pricing",
+        "Lead automation"
+    ],
+    "live": "https://useheron.io",
+    "visualType": "heron",
+    "features": [
+        "Event-triggered money-back campaign design",
+        "Campaign pricing using prediction-market odds",
+        "Refund caps, hedge costs, and margin projections",
+        "Equivalent discount-rate calculations",
+        "Prospect enrichment and deduplication",
+        "Email outreach and reply tracking"
+    ],
+    "date": timeline.heron
+  },
+  poker: {
+    "name": "Poker Bot",
+    "tagline": "Real-time strategy, game-state tracking, and analysis",
+    "description": "Co-built a multi-platform poker system with strategy computation, game-state tracking, a SQLite event hub, a React dashboard, and a Swift iOS app. The strategy recorded 43 bb/100 over 47,000+ hands; these figures describe that recorded sample. The monorepo spans 300,000+ lines and 500+ test files.",
+    "challenge": "Strategy decisions depend on an accurate reconstruction of the hand and fast postflop computation. Straddles, seat changes, and short all-ins can corrupt state, while misleading timing logs can obscure the real performance bottleneck.",
+    "solution": "Connected adapters for four platforms to a shared SQLite event hub, React dashboard, and iOS app. Removed an unused 1,326-combination classification from postflop computation, verified byte-identical output on 547 recorded spots, and corrected timing attribution between model and code execution.",
+    "impact": "Reduced median postflop compute about 8x, from 401 ms to 48 ms. Audited 1,777 recorded hands: pot and to-call matched on all 580 checks, and preflop classification matched on all 407 checks. Fixed eight tracker defects.",
+    "tech": [
+        "TypeScript",
+        "Python",
+        "React",
+        "Swift",
+        "SQLite"
+    ],
+    "visualType": "poker",
+    "features": [
+        "Adapters for four poker platforms",
+        "SQLite event hub and hand-history tracking",
+        "React dashboard and Swift iOS application",
+        "Postflop computation reduced from 401 ms to 48 ms",
+        "Byte-identical strategy output across 547 recorded spots",
+        "State audit covering 1,777 recorded hands"
+    ],
+    "date": timeline.poker
+  },
   hivemind: {
+    date: "Jan 2026",
     name: "HiveMind",
     tagline: "AI forecasting with autonomous agents and prediction markets",
     description: "Built a full-stack AI forecasting simulator where role-specialized agents research real-world events, form probability estimates, and trade in prediction markets. An LMSR market maker converts positions into prices, while a live dashboard exposes research, reasoning, trades, and consensus forecasts.",
@@ -68,6 +154,7 @@ export const projectsData: Record<string, ProjectData> = {
     ],
   },
   seecare: {
+    date: "Sep 2025 - Dec 2025",
     name: "SeeCare",
     tagline: "Recognition and conversation recall for dementia support",
     description: "Developed a mobile memory aid for dementia support that connects person identification with searchable conversation context. Facial recognition, speaker diarization, and conversation summaries help users revisit who they met and what they discussed; wake-word detection, client-side processing, and privacy controls support conversation capture.",

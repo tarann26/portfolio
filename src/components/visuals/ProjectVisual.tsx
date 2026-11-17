@@ -10,7 +10,10 @@ type ProjectType =
   | "brainwave"
   | "flyte"
   | "cairn"
-  | "orderbook";
+  | "orderbook"
+  | "heron"
+  | "attune"
+  | "poker";
 
 interface ProjectVisualProps {
   type: ProjectType;
@@ -1079,6 +1082,51 @@ function OrderBookVisual({ isHovered }: { isHovered: boolean }) {
   );
 }
 
+function ProductFlowVisual({ type }: { type: "attune" | "heron" | "poker" }) {
+  const flows = {
+    attune: {
+      title: "implementation flow",
+      stages: ["source + discovery", "reviewed brief", "agent implementation", "verify + release"],
+      footer: "React / Python / Temporal",
+    },
+    heron: {
+      title: "campaign economics",
+      stages: ["event + refund cap", "prediction-market odds", "campaign pricing", "quote + hedge"],
+      footer: "1,650+ prospects / 22 states",
+    },
+    poker: {
+      title: "real-time strategy",
+      stages: ["platform adapters", "SQLite event hub", "strategy computation", "React dashboard + iOS"],
+      footer: "postflop p50: 401 ms > 48 ms",
+    },
+  };
+  const flow = flows[type];
+
+  return (
+    <svg viewBox="0 0 100 100" className="w-full h-full" aria-hidden="true">
+      <text x="50" y="10" textAnchor="middle" fill="#a1a1aa" fontSize="3.8" fontFamily="monospace">
+        {flow.title}
+      </text>
+      {flow.stages.map((stage, index) => {
+        const y = 19 + index * 17;
+        return (
+          <g key={stage}>
+            {index > 0 && <path d={`M50 ${y - 5} V${y}`} stroke="#06b6d4" strokeWidth="0.8" />}
+            <rect x="12" y={y} width="76" height="12" rx="2" fill="#141414" stroke={index === 2 ? "#06b6d4" : "#262626"} strokeWidth="0.8" />
+            <circle cx="18" cy={y + 6} r="1.2" fill={index === 3 ? "#22c55e" : "#06b6d4"} />
+            <text x="53" y={y + 7.3} textAnchor="middle" fill={index === 2 ? "#06b6d4" : "#fafafa"} fontSize="3.5" fontFamily="monospace">
+              {stage}
+            </text>
+          </g>
+        );
+      })}
+      <text x="50" y="92" textAnchor="middle" fill="#a1a1aa" fontSize="3.2" fontFamily="monospace">
+        {flow.footer}
+      </text>
+    </svg>
+  );
+}
+
 export function ProjectVisual({ type, isHovered = false }: ProjectVisualProps) {
   const visuals: Record<ProjectType, React.ReactNode> = {
     hivemind: <HiveMindVisual isHovered={isHovered} />,
@@ -1089,6 +1137,9 @@ export function ProjectVisual({ type, isHovered = false }: ProjectVisualProps) {
     flyte: <FlyteVisual isHovered={isHovered} />,
     cairn: <CairnVisual isHovered={isHovered} />,
     orderbook: <OrderBookVisual isHovered={isHovered} />,
+    attune: <ProductFlowVisual type="attune" />,
+    heron: <ProductFlowVisual type="heron" />,
+    poker: <ProductFlowVisual type="poker" />,
   };
 
   return (
